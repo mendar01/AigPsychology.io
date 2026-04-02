@@ -1,2 +1,2 @@
-# AigPsychology.io
+AigPsychology.io
 
