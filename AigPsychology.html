@@ -3,36 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AigPsychology — Психологиялық тесттер мен кеңестер</title>
-  <meta name="description" content="AigPsychology — жасөспірімдер мен ересектерге арналған психологиялық тесттер, эмоция трекері, кеңестер және өзін тануға арналған ыңғайлы сайт." />
+  <title>AigPsychology — Өзіңді түсін — өміріңді өзгерт</title>
+  <meta name="description" content="AigPsychology — психологиялық тесттер, көңіл-күй check-in, қысқа кеңестер және өзін жақсырақ түсінуге арналған заманауи сайт." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-1: #f8f5ff;
-      --bg-2: #eef8ff;
-      --bg-3: #fff8fc;
-      --text: #1f1b2d;
-      --muted: #6f6a86;
+      --bg1: #f8f5ff;
+      --bg2: #eef7ff;
+      --bg3: #fff8fc;
+      --text: #221d32;
+      --muted: #716c87;
       --primary: #7c5cff;
-      --primary-2: #5f46de;
-      --accent: #ff7ab6;
-      --accent-2: #55c6ff;
-      --success: #39b980;
-      --warning: #ffb648;
-      --danger: #ff6b7a;
-      --card: rgba(255, 255, 255, 0.72);
-      --card-strong: rgba(255, 255, 255, 0.88);
-      --border: rgba(255, 255, 255, 0.55);
-      --shadow: 0 20px 60px rgba(104, 88, 180, 0.16);
-      --shadow-soft: 0 12px 30px rgba(105, 91, 179, 0.12);
+      --primary-dark: #5f46da;
+      --accent: #ff7eb6;
+      --accent2: #6bd3ff;
+      --card: rgba(255,255,255,.72);
+      --card-strong: rgba(255,255,255,.86);
+      --border: rgba(255,255,255,.58);
+      --shadow: 0 20px 60px rgba(110, 90, 180, .15);
+      --shadow-soft: 0 10px 30px rgba(110, 90, 180, .10);
       --radius-xl: 30px;
       --radius-lg: 24px;
       --radius-md: 18px;
-      --radius-sm: 14px;
-      --container: 1240px;
+      --container: 1220px;
     }
 
     * {
@@ -48,17 +44,17 @@
       font-family: "Noto Sans", "Manrope", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 10% 10%, rgba(196, 176, 255, 0.45), transparent 24%),
-        radial-gradient(circle at 90% 20%, rgba(135, 220, 255, 0.38), transparent 24%),
-        radial-gradient(circle at 80% 90%, rgba(255, 170, 209, 0.32), transparent 24%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+        radial-gradient(circle at 10% 15%, rgba(203, 176, 255, 0.45), transparent 23%),
+        radial-gradient(circle at 90% 20%, rgba(159, 229, 255, 0.45), transparent 23%),
+        radial-gradient(circle at 80% 90%, rgba(255, 182, 216, 0.35), transparent 23%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
       min-height: 100vh;
       overflow-x: hidden;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
@@ -66,10 +62,7 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea,
-    select {
+    button {
       font: inherit;
     }
 
@@ -83,24 +76,24 @@
       border-radius: 50%;
       filter: blur(70px);
       z-index: -1;
-      opacity: 0.5;
       pointer-events: none;
+      opacity: .5;
     }
 
     .blur-1 {
       width: 280px;
       height: 280px;
-      background: #dcc3ff;
-      top: 70px;
-      left: -80px;
+      background: #d8bbff;
+      top: 80px;
+      left: -70px;
     }
 
     .blur-2 {
       width: 320px;
       height: 320px;
-      background: #b6ecff;
-      right: -100px;
-      bottom: 80px;
+      background: #b9ecff;
+      right: -90px;
+      bottom: 70px;
     }
 
     .header {
@@ -108,8 +101,8 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, 0.42);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255,255,255,.42);
+      border-bottom: 1px solid rgba(255,255,255,.42);
     }
 
     .nav {
@@ -117,14 +110,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      min-width: 0;
     }
 
     .logo {
@@ -137,20 +129,16 @@
       flex-shrink: 0;
     }
 
-    .brand-text {
-      min-width: 0;
-    }
-
     .brand-title {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       font-weight: 800;
       line-height: 1.1;
     }
 
     .brand-subtitle {
+      margin-top: 4px;
+      font-size: .86rem;
       color: var(--muted);
-      font-size: 0.88rem;
-      margin-top: 3px;
     }
 
     .nav-right {
@@ -162,13 +150,13 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
     }
 
     .nav-links a {
-      font-weight: 700;
       color: var(--muted);
-      transition: 0.25s ease;
+      font-weight: 700;
+      transition: .25s ease;
     }
 
     .nav-links a:hover {
@@ -178,37 +166,36 @@
     .lang-switch {
       display: flex;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.52);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 999px;
       padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.56);
       box-shadow: var(--shadow-soft);
     }
 
     .lang-btn {
       border: none;
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor: pointer;
       background: transparent;
       color: var(--muted);
       font-weight: 800;
-      transition: 0.25s ease;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: .25s ease;
     }
 
     .lang-btn.active {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
-      box-shadow: 0 10px 24px rgba(124, 92, 255, 0.28);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
     }
 
     .hero {
-      padding: 56px 0 32px;
+      padding: 58px 0 26px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 42px;
       align-items: center;
     }
@@ -219,29 +206,30 @@
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.58);
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(255,255,255,.58);
       box-shadow: var(--shadow-soft);
-      color: var(--primary-2);
+      color: var(--primary-dark);
       font-weight: 800;
       margin-bottom: 18px;
-      font-size: 0.94rem;
+      font-size: .92rem;
     }
 
     .hero h1 {
       margin: 0 0 18px;
-      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
       line-height: 1.02;
       letter-spacing: -0.04em;
       font-weight: 800;
+      max-width: 760px;
     }
 
     .hero p {
       margin: 0 0 28px;
-      font-size: 1.06rem;
+      max-width: 650px;
       color: var(--muted);
-      line-height: 1.85;
-      max-width: 660px;
+      font-size: 1.05rem;
+      line-height: 1.82;
     }
 
     .hero-actions {
@@ -256,12 +244,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      border: none;
       padding: 15px 24px;
       border-radius: 16px;
-      border: none;
-      cursor: pointer;
       font-weight: 800;
-      transition: 0.25s ease;
+      cursor: pointer;
+      transition: .25s ease;
       box-shadow: var(--shadow-soft);
     }
 
@@ -272,55 +260,42 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 34px rgba(124, 92, 255, 0.24);
+      box-shadow: 0 20px 36px rgba(124, 92, 255, .24);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.58);
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.58);
       color: var(--text);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.95);
     }
 
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .mini-stat {
+    .tag {
+      padding: 12px 16px;
+      border-radius: 16px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      backdrop-filter: blur(14px);
       box-shadow: var(--shadow-soft);
-    }
-
-    .mini-stat strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .mini-stat span {
-      display: block;
       color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.45;
+      font-weight: 700;
     }
 
     .hero-visual {
       position: relative;
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.44);
-      border: 1px solid rgba(255, 255, 255, 0.58);
+    .hero-photo-card {
+      background: rgba(255,255,255,.45);
+      border: 1px solid rgba(255,255,255,.55);
       border-radius: 34px;
       padding: 14px;
       backdrop-filter: blur(16px);
@@ -330,65 +305,65 @@
 
     .hero-photo {
       width: 100%;
-      height: 650px;
+      height: 640px;
       object-fit: cover;
       border-radius: 24px;
     }
 
-    .float-box {
+    .floating-note {
       position: absolute;
-      max-width: 250px;
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(255, 255, 255, 0.62);
+      max-width: 240px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(255,255,255,.58);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(14px);
-      border-radius: 20px;
-      padding: 16px 18px;
     }
 
-    .float-box h4 {
+    .floating-note h4 {
       margin: 0 0 8px;
       font-size: 1rem;
     }
 
-    .float-box p {
+    .floating-note p {
       margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.55;
       color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.55;
     }
 
-    .float-1 {
-      left: -26px;
-      bottom: 40px;
+    .note-1 {
+      left: -24px;
+      bottom: 42px;
     }
 
-    .float-2 {
+    .note-2 {
       right: -16px;
-      top: 44px;
+      top: 42px;
     }
 
     .section {
-      padding: 38px 0 86px;
+      padding: 42px 0 84px;
     }
 
     .section-head {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .section-head span {
       display: inline-block;
-      color: var(--primary-2);
+      font-size: .95rem;
       font-weight: 800;
+      color: var(--primary-dark);
       margin-bottom: 10px;
-      font-size: 0.95rem;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.15;
+      font-size: clamp(1.85rem, 3vw, 3rem);
+      line-height: 1.14;
     }
 
     .section-head p {
@@ -401,10 +376,10 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: 26px;
       padding: 24px;
-      backdrop-filter: blur(14px);
       box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
     }
 
     .grid-2 {
@@ -419,66 +394,74 @@
       gap: 18px;
     }
 
-    .grid-4 {
+    .checkin-wrap {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1.05fr .95fr;
       gap: 18px;
+      align-items: stretch;
     }
 
-    .feature-card,
-    .test-card,
-    .advice-card,
-    .idea-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(14px);
-      transition: 0.25s ease;
-      height: 100%;
-    }
-
-    .feature-card:hover,
-    .test-card:hover,
-    .advice-card:hover,
-    .idea-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .icon {
-      width: 58px;
-      height: 58px;
+    .checkin-buttons {
       display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(255, 122, 182, 0.18));
-      font-size: 1.5rem;
-      margin-bottom: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
     }
 
-    .feature-card h3,
-    .test-card h3,
-    .advice-card h3,
-    .idea-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      line-height: 1.35;
+    .checkin-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      padding: 18px 14px;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(255,255,255,.62);
+      box-shadow: var(--shadow-soft);
+      font-weight: 800;
+      color: var(--text);
+      transition: .25s ease;
     }
 
-    .feature-card p,
-    .test-card p,
-    .advice-card p,
-    .idea-card p {
-      margin: 0;
+    .checkin-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .checkin-btn .emoji {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .analysis-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      text-align: center;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.97rem;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .tests-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     .test-card {
       position: relative;
       overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+      transition: .25s ease;
+    }
+
+    .test-card:hover {
+      transform: translateY(-5px);
     }
 
     .test-card::after {
@@ -486,10 +469,10 @@
       position: absolute;
       width: 120px;
       height: 120px;
-      right: -28px;
-      top: -28px;
+      right: -34px;
+      top: -34px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(124, 92, 255, 0.18), transparent 70%);
+      background: radial-gradient(circle, rgba(124, 92, 255, .14), transparent 70%);
     }
 
     .test-top {
@@ -497,17 +480,39 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .test-badge {
+    .icon-box {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 1.45rem;
+      background: linear-gradient(135deg, rgba(124, 92, 255, .16), rgba(255, 126, 182, .16));
+    }
+
+    .pill {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(124, 92, 255, 0.12);
-      color: var(--primary-2);
-      font-size: 0.82rem;
+      background: rgba(124, 92, 255, .1);
+      color: var(--primary-dark);
+      font-size: .82rem;
       font-weight: 800;
       white-space: nowrap;
+    }
+
+    .test-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .test-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .96rem;
     }
 
     .test-link {
@@ -517,103 +522,88 @@
       color: var(--primary);
     }
 
-    .quote-box {
-      text-align: center;
-      padding: 28px;
-      border-radius: 26px;
-      background: linear-gradient(135deg, rgba(124, 92, 255, 0.12), rgba(255, 122, 182, 0.1), rgba(85, 198, 255, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.55);
+    .tips-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .tip-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tip-tab {
+      border: none;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.58);
+      font-weight: 800;
+      color: var(--muted);
       box-shadow: var(--shadow-soft);
+      transition: .25s ease;
     }
 
-    .quote-box h3 {
-      margin: 0 0 12px;
-      font-size: 1.35rem;
+    .tip-tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
     }
 
-    .quote-box p {
+    .tip-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      color: var(--muted);
+      line-height: 1.8;
+      min-height: 120px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+      transition: .25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      margin: 14px 0 10px;
+      font-size: 1.02rem;
+    }
+
+    .feature p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
-    }
-
-    .mood-box {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .mood-options {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .mood-btn {
-      border: none;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.65);
-      padding: 18px 12px;
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--text);
-      box-shadow: var(--shadow-soft);
-      transition: 0.25s ease;
-    }
-
-    .mood-btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .mood-result {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 100%;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--muted);
-    }
-
-    .tip-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .tip-item {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid rgba(255, 255, 255, 0.58);
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .usp-list,
-    .future-list,
-    .value-list,
-    .slogan-list {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.9;
+      font-size: .95rem;
     }
 
     .warning {
-      background: linear-gradient(135deg, rgba(255, 182, 72, 0.16), rgba(255, 107, 122, 0.12));
-      border: 1px solid rgba(255, 182, 72, 0.22);
+      background: linear-gradient(135deg, rgba(255, 183, 76, .14), rgba(255, 121, 121, .10));
+      border: 1px solid rgba(255, 183, 76, .2);
     }
 
     .footer {
       padding: 30px 0 44px;
       text-align: center;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .95rem;
     }
 
     .footer strong {
@@ -623,7 +613,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: 0.8s ease;
+      transition: .8s ease;
     }
 
     .reveal.show {
@@ -633,8 +623,9 @@
 
     @media (max-width: 1150px) {
       .hero-grid,
-      .mood-box,
-      .grid-4 {
+      .checkin-wrap,
+      .features-grid,
+      .tests-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -643,10 +634,10 @@
       }
 
       .hero-photo {
-        height: 540px;
+        height: 530px;
       }
 
-      .float-box {
+      .floating-note {
         position: static;
         max-width: 100%;
         margin-top: 14px;
@@ -680,16 +671,13 @@
       .hero-grid,
       .grid-2,
       .grid-3,
-      .grid-4,
-      .mood-box {
+      .checkin-wrap,
+      .features-grid,
+      .tests-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-points {
-        grid-template-columns: 1fr;
-      }
-
-      .mood-options {
+      .checkin-buttons {
         grid-template-columns: 1fr;
       }
 
@@ -713,7 +701,7 @@
       }
 
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.15rem;
       }
 
       .hero-actions {
@@ -724,9 +712,9 @@
         width: 100%;
       }
 
-      .hero-card {
-        padding: 10px;
+      .hero-photo-card {
         border-radius: 24px;
+        padding: 10px;
       }
 
       .hero-photo {
@@ -734,11 +722,10 @@
         border-radius: 18px;
       }
 
-      .feature-card,
+      .card,
       .test-card,
-      .advice-card,
-      .idea-card,
-      .card {
+      .feature,
+      .tip-content {
         padding: 18px;
       }
     }
@@ -752,7 +739,7 @@
     <div class="container nav">
       <a href="#" class="brand">
         <img src="logo.png" alt="AigPsychology logo" class="logo">
-        <div class="brand-text">
+        <div>
           <div class="brand-title">AigPsychology</div>
           <div class="brand-subtitle">by Aigerim Abzalkyzy</div>
         </div>
@@ -761,10 +748,9 @@
       <div class="nav-right">
         <nav class="nav-links">
           <a href="#home" data-kk="Басты бет" data-ru="Главная">Басты бет</a>
+          <a href="#checkin" data-kk="Күйім" data-ru="Моё состояние">Күйім</a>
           <a href="#tests" data-kk="Тесттер" data-ru="Тесты">Тесттер</a>
-          <a href="#ideas" data-kk="Идеялар" data-ru="Идеи">Идеялар</a>
-          <a href="#advice" data-kk="Кеңестер" data-ru="Советы">Кеңестер</a>
-          <a href="#about" data-kk="Жоба туралы" data-ru="О проекте">Жоба туралы</a>
+          <a href="#tips" data-kk="Кеңестер" data-ru="Советы">Кеңестер</a>
         </nav>
 
         <div class="lang-switch">
@@ -779,382 +765,273 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="badge" data-kk="💜 Өзіңді түсін — өміріңді өзгерт" data-ru="💜 Пойми себя — измени свою жизнь">
-            💜 Өзіңді түсін — өміріңді өзгерт
+          <div class="badge" data-kk="Психологиялық қолдау кеңістігі" data-ru="Пространство психологической поддержки">
+            Психологиялық қолдау кеңістігі
           </div>
 
           <h1
-            data-kk="Жасөспірімдер мен ересектерге арналған психологиялық тесттер мен кеңестер"
-            data-ru="Психологические тесты и советы для подростков и взрослых"
+            data-kk="Өзіңді түсін — өміріңді өзгерт"
+            data-ru="Пойми себя — измени свою жизнь"
           >
-            Жасөспірімдер мен ересектерге арналған психологиялық тесттер мен кеңестер
+            Өзіңді түсін — өміріңді өзгерт
           </h1>
 
           <p
-            data-kk="AigPsychology — стресс деңгейін, мазасыздықты, көңіл-күйді және өзін-өзі бағалауды анықтауға көмектесетін заманауи сайт. Мұнда сен тесттен өтіп, кеңес алып, өзіңді жақсырақ тани аласың. Сайт қазақ және орыс тілдерінде жұмыс істейді."
-            data-ru="AigPsychology — современный сайт, который помогает определить уровень стресса, тревожности, настроение и самооценку. Здесь можно пройти тесты, получить советы и лучше понять себя. Сайт работает на казахском и русском языках."
+            data-kk="AigPsychology — жасөспірімдер мен ересектерге арналған психологиялық сайт. Мұнда сен өз күйіңді белгілеп, қысқа қолдау алып, тесттерден өтіп, эмоцияң мен ішкі жағдайыңды жақсырақ түсіне аласың."
+            data-ru="AigPsychology — психологический сайт для подростков и взрослых. Здесь можно отметить своё состояние, получить короткую поддержку, пройти тесты и лучше понять свои эмоции и внутреннее состояние."
           >
-            AigPsychology — стресс деңгейін, мазасыздықты, көңіл-күйді және өзін-өзі бағалауды анықтауға көмектесетін заманауи сайт. Мұнда сен тесттен өтіп, кеңес алып, өзіңді жақсырақ тани аласың. Сайт қазақ және орыс тілдерінде жұмыс істейді.
+            AigPsychology — жасөспірімдер мен ересектерге арналған психологиялық сайт. Мұнда сен өз күйіңді белгілеп, қысқа қолдау алып, тесттерден өтіп, эмоцияң мен ішкі жағдайыңды жақсырақ түсіне аласың.
           </p>
 
           <div class="hero-actions">
-            <a href="#tests" class="btn btn-primary" data-kk="Тесттерді бастау" data-ru="Начать тесты">Тесттерді бастау</a>
-            <a href="#about" class="btn btn-secondary" data-kk="Жоба туралы" data-ru="О проекте">Жоба туралы</a>
+            <a href="#tests" class="btn btn-primary" data-kk="Тесттерге өту" data-ru="Перейти к тестам">Тесттерге өту</a>
+            <a href="#checkin" class="btn btn-secondary" data-kk="Күйімді белгілеу" data-ru="Отметить состояние">Күйімді белгілеу</a>
           </div>
 
-          <div class="hero-points">
-            <div class="mini-stat">
-              <strong data-kk="2 тіл" data-ru="2 языка">2 тіл</strong>
-              <span data-kk="Алдымен қазақша, кейін орысша" data-ru="Сначала казахский, затем русский">Алдымен қазақша, кейін орысша</span>
-            </div>
-
-            <div class="mini-stat">
-              <strong data-kk="6 бағыт" data-ru="6 направлений">6 бағыт</strong>
-              <span data-kk="Тест, кеңес, эмоция, өзін тану" data-ru="Тесты, советы, эмоции, самопознание">Тест, кеңес, эмоция, өзін тану</span>
-            </div>
-
-            <div class="mini-stat">
-              <strong data-kk="Жеңіл формат" data-ru="Лёгкий формат">Жеңіл формат</strong>
-              <span data-kk="Қарапайым, көркем және түсінікті" data-ru="Просто, красиво и понятно">Қарапайым, көркем және түсінікті</span>
-            </div>
+          <div class="quick-tags">
+            <div class="tag" data-kk="Қазақша және орысша" data-ru="На казахском и русском">Қазақша және орысша</div>
+            <div class="tag" data-kk="Анонимді және ыңғайлы" data-ru="Анонимно и удобно">Анонимді және ыңғайлы</div>
+            <div class="tag" data-kk="Қысқа әрі түсінікті" data-ru="Коротко и понятно">Қысқа әрі түсінікті</div>
           </div>
         </div>
 
         <div class="hero-visual reveal">
-          <div class="hero-card">
+          <div class="hero-photo-card">
             <img src="girl.jpg" alt="AigPsychology басты фото" class="hero-photo">
           </div>
 
-          <div class="float-box float-1">
-            <h4 data-kk="🧠 Өзін тану" data-ru="🧠 Самопознание">🧠 Өзін тану</h4>
+          <div class="floating-note note-1">
+            <h4 data-kk="Күнделікті күй белгілеу" data-ru="Ежедневная отметка состояния">Күнделікті күй белгілеу</h4>
             <p
-              data-kk="Сайт сенің ішкі әлеміңді түсінуге және эмоцияларыңды бақылауға көмектеседі."
-              data-ru="Сайт помогает лучше понимать свой внутренний мир и отслеживать эмоции."
+              data-kk="Өзіңді бір сөзбен емес, сезіммен түсін."
+              data-ru="Понимай себя не одним словом, а через чувство."
             >
-              Сайт сенің ішкі әлеміңді түсінуге және эмоцияларыңды бақылауға көмектеседі.
+              Өзіңді бір сөзбен емес, сезіммен түсін.
             </p>
           </div>
 
-          <div class="float-box float-2">
-            <h4 data-kk="🌿 Қолдау" data-ru="🌿 Поддержка">🌿 Қолдау</h4>
+          <div class="floating-note note-2">
+            <h4 data-kk="Жеке қолдау" data-ru="Личная поддержка">Жеке қолдау</h4>
             <p
-              data-kk="Тесттен кейін қарапайым түсіндірме мен пайдалы кеңестер беріледі."
-              data-ru="После тестов даются понятные объяснения и полезные советы."
+              data-kk="Сенің таңдауыңа қарай қысқа, жылы кеңес шығады."
+              data-ru="В зависимости от твоего выбора сайт даст короткий и бережный совет."
             >
-              Тесттен кейін қарапайым түсіндірме мен пайдалы кеңестер беріледі.
+              Сенің таңдауыңа қарай қысқа, жылы кеңес шығады.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checkin">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-kk="Check-in" data-ru="Check-in">Check-in</span>
+          <h2 data-kk="Бүгін өзіңді қалай сезініп тұрсың?" data-ru="Как ты себя чувствуешь сегодня?">
+            Бүгін өзіңді қалай сезініп тұрсың?
+          </h2>
+          <p
+            data-kk="Өзіңе жақын күйді таңда. Сайт саған қысқа жеке қолдау мен ұсыныс береді."
+            data-ru="Выбери состояние, которое тебе сейчас ближе. Сайт даст короткую личную поддержку и рекомендацию."
+          >
+            Өзіңе жақын күйді таңда. Сайт саған қысқа жеке қолдау мен ұсыныс береді.
+          </p>
+        </div>
+
+        <div class="checkin-wrap">
+          <div class="card reveal">
+            <div class="checkin-buttons">
+              <button class="checkin-btn" onclick="showAnalysis('happy')">
+                <span class="emoji">😄</span>
+                <span data-kk="Бақыттымын" data-ru="Я в хорошем настроении">Бақыттымын</span>
+              </button>
+
+              <button class="checkin-btn" onclick="showAnalysis('tired')">
+                <span class="emoji">😌</span>
+                <span data-kk="Шаршадым" data-ru="Я устал(а)">Шаршадым</span>
+              </button>
+
+              <button class="checkin-btn" onclick="showAnalysis('angry')">
+                <span class="emoji">😡</span>
+                <span data-kk="Ашулымын" data-ru="Я злюсь">Ашулымын</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card analysis-box reveal">
+            <div id="analysisText"
+                 data-default-kk="Өзіңе жақын батырманы таңда — мұнда саған арналған қысқа қолдау шығады ✨"
+                 data-default-ru="Выбери подходящую кнопку — здесь появится короткая поддержка именно для тебя ✨">
+              Өзіңе жақын батырманы таңда — мұнда саған арналған қысқа қолдау шығады ✨
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tests">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-kk="Тесттер" data-ru="Тесты">Тесттер</span>
+          <h2 data-kk="Өзіңе жақын тестті таңда" data-ru="Выбери подходящий тест">Өзіңе жақын тестті таңда</h2>
+          <p
+            data-kk="Мұнда сендегі дайын тесттерге арналған бөлімдер орналасады. Әрқайсысы бөлек параққа өтеді."
+            data-ru="Здесь расположены разделы для твоих готовых тестов. Каждый тест ведёт на отдельную страницу."
+          >
+            Мұнда сендегі дайын тесттерге арналған бөлімдер орналасады. Әрқайсысы бөлек параққа өтеді.
+          </p>
+        </div>
+
+        <div class="tests-grid">
+          <a href="tests.html#stress" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">😟</div>
+              <div class="pill" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
+            </div>
+            <h3 data-kk="Стресс тесті" data-ru="Тест на стресс">Стресс тесті</h3>
+            <p data-kk="Стресс деңгейіңді бағалап, соған сай ұсыныс ал."
+               data-ru="Оцени уровень стресса и получи подходящую рекомендацию.">
+              Стресс деңгейіңді бағалап, соған сай ұсыныс ал.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+
+          <a href="tests.html#mood" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">😊</div>
+              <div class="pill" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
+            </div>
+            <h3 data-kk="Көңіл-күй тесті" data-ru="Тест настроения">Көңіл-күй тесті</h3>
+            <p data-kk="Қазіргі эмоционалдық жағдайыңды анықта."
+               data-ru="Определи своё текущее эмоциональное состояние.">
+              Қазіргі эмоционалдық жағдайыңды анықта.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+
+          <a href="tests.html#anxiety" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">😰</div>
+              <div class="pill" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
+            </div>
+            <h3 data-kk="Мазасыздық тесті" data-ru="Тест тревожности">Мазасыздық тесті</h3>
+            <p data-kk="Ішкі уайым мен мазасыздық деңгейін біл."
+               data-ru="Узнай уровень внутреннего беспокойства и тревожности.">
+              Ішкі уайым мен мазасыздық деңгейін біл.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+
+          <a href="tests.html#selfesteem" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">🌟</div>
+              <div class="pill" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
+            </div>
+            <h3 data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</h3>
+            <p data-kk="Өзіңе деген сенім мен ішкі қабылдауды тексер."
+               data-ru="Проверь уверенность в себе и отношение к себе.">
+              Өзіңе деген сенім мен ішкі қабылдауды тексер.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+
+          <a href="tests.html#temperament" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">🎭</div>
+              <div class="pill" data-kk="7 сұрақ" data-ru="7 вопросов">7 сұрақ</div>
+            </div>
+            <h3 data-kk="Темперамент" data-ru="Темперамент">Темперамент</h3>
+            <p data-kk="Сенің мінез типіңе жақын темпераментті анықта."
+               data-ru="Определи темперамент, который ближе твоему характеру.">
+              Сенің мінез типіңе жақын темпераментті анықта.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+
+          <a href="tests.html#ikigai" class="test-card reveal">
+            <div class="test-top">
+              <div class="icon-box">💼</div>
+              <div class="pill" data-kk="8 сұрақ" data-ru="8 вопросов">8 сұрақ</div>
+            </div>
+            <h3 data-kk="Ikigai бағыты" data-ru="Направление Ikigai">Ikigai бағыты</h3>
+            <p data-kk="Өзіңе жақын қабілет пен болашақ бағытты тап."
+               data-ru="Найди подходящие тебе способности и будущее направление.">
+              Өзіңе жақын қабілет пен болашақ бағытты тап.
+            </p>
+            <span class="test-link" data-kk="Өту →" data-ru="Перейти →">Өту →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-kk="Қысқа кеңестер" data-ru="Короткие советы">Қысқа кеңестер</span>
+          <h2 data-kk="Саған қазір не көмектесе алады?" data-ru="Что может помочь тебе прямо сейчас?">
+            Саған қазір не көмектесе алады?
+          </h2>
+        </div>
+
+        <div class="tips-panel reveal">
+          <div class="tip-tabs">
+            <button class="tip-tab active" onclick="showTip('mindset', this)" data-kk="Эмоция" data-ru="Эмоции">Эмоция</button>
+            <button class="tip-tab" onclick="showTip('time', this)" data-kk="Уақыт" data-ru="Время">Уақыт</button>
+            <button class="tip-tab" onclick="showTip('money', this)" data-kk="Қаржы" data-ru="Финансы">Қаржы</button>
+            <button class="tip-tab" onclick="showTip('team', this)" data-kk="Қарым-қатынас" data-ru="Общение">Қарым-қатынас</button>
+            <button class="tip-tab" onclick="showTip('family', this)" data-kk="Отбасы" data-ru="Семья">Отбасы</button>
+          </div>
+
+          <div class="tip-content" id="tipContent"></div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="quote-box reveal">
-          <h3 data-kk="Сен жалғыз емессің" data-ru="Ты не один(одна)">Сен жалғыз емессің</h3>
-          <p
-            data-kk="Сенің ішкі әлемің — маңызды. Эмоцияңды түсіну, өзіңді тыңдау және қажет кезде көмек сұрау — әлсіздік емес, керісінше күш."
-            data-ru="Твой внутренний мир важен. Понимать свои эмоции, слышать себя и просить помощь при необходимости — это не слабость, а сила."
-          >
-            Сенің ішкі әлемің — маңызды. Эмоцияңды түсіну, өзіңді тыңдау және қажет кезде көмек сұрау — әлсіздік емес, керісінше күш.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="tests" class="section">
-      <div class="container">
         <div class="section-head reveal">
-          <span data-kk="Тесттер" data-ru="Тесты">Тесттер</span>
-          <h2 data-kk="Дайын тесттер осы жерде" data-ru="Готовые тесты уже здесь">Дайын тесттер осы жерде</h2>
-          <p
-            data-kk="Сендегі дайын тесттерді сайт құрылымына енгіздік. Әр тест бөлек параққа шығарылады. Қазір басты бетте олардың бағыты мен мағынасы көрсетілген."
-            data-ru="Твои готовые тесты уже заложены в структуру сайта. Каждый тест будет вынесен на отдельную страницу. Сейчас на главной странице показаны их направления и смысл."
-          >
-            Сендегі дайын тесттерді сайт құрылымына енгіздік. Әр тест бөлек параққа шығарылады. Қазір басты бетте олардың бағыты мен мағынасы көрсетілген.
-          </p>
+          <span data-kk="Неліктен ыңғайлы?" data-ru="Почему это удобно?">Неліктен ыңғайлы?</span>
+          <h2 data-kk="Сайт пайдаланушыға оңай және жайлы болуы үшін жасалған"
+              data-ru="Сайт создан так, чтобы им было легко и спокойно пользоваться">
+            Сайт пайдаланушыға оңай және жайлы болуы үшін жасалған
+          </h2>
         </div>
 
-        <div class="grid-3">
-          <a href="tests.html#stress" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">😟</div>
-              <div class="test-badge" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
-            </div>
-            <h3 data-kk="Стресс деңгейін анықтау" data-ru="Определение уровня стресса">Стресс деңгейін анықтау</h3>
-            <p
-              data-kk="Стресс деңгейіңді біліп, нәтижесіне қарай кеңес алуға болады."
-              data-ru="Узнай свой уровень стресса и получи рекомендации по результату."
-            >
-              Стресс деңгейіңді біліп, нәтижесіне қарай кеңес алуға болады.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-
-          <a href="tests.html#mood" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">😊</div>
-              <div class="test-badge" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
-            </div>
-            <h3 data-kk="Көңіл-күй тесті" data-ru="Тест настроения">Көңіл-күй тесті</h3>
-            <p
-              data-kk="Қазіргі эмоционалдық жағдайыңды бағалап, көңіл-күй деңгейіңді анықтайсың."
-              data-ru="Оцени текущее эмоциональное состояние и уровень настроения."
-            >
-              Қазіргі эмоционалдық жағдайыңды бағалап, көңіл-күй деңгейіңді анықтайсың.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-
-          <a href="tests.html#anxiety" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">😰</div>
-              <div class="test-badge" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
-            </div>
-            <h3 data-kk="Мазасыздық тесті" data-ru="Тест тревожности">Мазасыздық тесті</h3>
-            <p
-              data-kk="Ішкі уайым мен мазасыздық деңгейін анықтауға көмектеседі."
-              data-ru="Помогает определить уровень внутреннего беспокойства и тревожности."
-            >
-              Ішкі уайым мен мазасыздық деңгейін анықтауға көмектеседі.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-
-          <a href="tests.html#selfesteem" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">🌟</div>
-              <div class="test-badge" data-kk="10 сұрақ" data-ru="10 вопросов">10 сұрақ</div>
-            </div>
-            <h3 data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</h3>
-            <p
-              data-kk="Өзіңе деген сенім, қабылдау және ішкі бағалауды көрсетеді."
-              data-ru="Показывает уровень уверенности в себе, принятия себя и самооценки."
-            >
-              Өзіңе деген сенім, қабылдау және ішкі бағалауды көрсетеді.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-
-          <a href="tests.html#temperament" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">🎭</div>
-              <div class="test-badge" data-kk="7 сұрақ" data-ru="7 вопросов">7 сұрақ</div>
-            </div>
-            <h3 data-kk="Темперамент тесті" data-ru="Тест на темперамент">Темперамент тесті</h3>
-            <p
-              data-kk="Сенің темпераментіңді анықтайды: сангвиник, флегматик, холерик, меланхолик."
-              data-ru="Определяет твой тип темперамента: сангвиник, флегматик, холерик или меланхолик."
-            >
-              Сенің темпераментіңді анықтайды: сангвиник, флегматик, холерик, меланхолик.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-
-          <a href="tests.html#ikigai" class="test-card reveal">
-            <div class="test-top">
-              <div class="icon">💼</div>
-              <div class="test-badge" data-kk="8 сұрақ" data-ru="8 вопросов">8 сұрақ</div>
-            </div>
-            <h3 data-kk="Ikigai мамандық бағыты" data-ru="Ikigai и направление профессии">Ikigai мамандық бағыты</h3>
-            <p
-              data-kk="Қай бағыт саған жақын екенін анықтауға көмектеседі."
-              data-ru="Помогает понять, какое профессиональное направление тебе ближе."
-            >
-              Қай бағыт саған жақын екенін анықтауға көмектеседі.
-            </p>
-            <span class="test-link" data-kk="Ашу →" data-ru="Открыть →">Ашу →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ideas" class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span data-kk="TOP-идеялар" data-ru="TOP-идеи">TOP-идеялар</span>
-          <h2 data-kk="Қосымшаға міндетті болуы керек бағыттар" data-ru="Что обязательно должно быть в проекте">Қосымшаға міндетті болуы керек бағыттар</h2>
-        </div>
-
-        <div class="grid-2">
-          <div class="idea-card reveal">
-            <div class="icon">🚀</div>
-            <h3 data-kk="ТОП-5 ең күшті идея" data-ru="ТОП-5 сильных идей">ТОП-5 ең күшті идея</h3>
-            <div class="tip-list">
-              <div class="tip-item" data-kk="🔥 Эмоция трекер — күн сайын белгілеу" data-ru="🔥 Трекер эмоций — ежедневная отметка">🔥 Эмоция трекер — күн сайын белгілеу</div>
-              <div class="tip-item" data-kk="🧠 Мини тесттер" data-ru="🧠 Мини-тесты">🧠 Мини тесттер</div>
-              <div class="tip-item" data-kk="⏰ Тайм-менеджмент құралдары" data-ru="⏰ Инструменты тайм-менеджмента">⏰ Тайм-менеджмент құралдары</div>
-              <div class="tip-item" data-kk="💬 Психологиялық кеңестер short format" data-ru="💬 Психологические советы в short format">💬 Психологиялық кеңестер short format</div>
-              <div class="tip-item" data-kk="📊 Жеке анализ — AI секілді сезілуі керек" data-ru="📊 Личный анализ — должно ощущаться как AI">📊 Жеке анализ — AI секілді сезілуі керек</div>
-            </div>
-          </div>
-
-          <div class="idea-card reveal">
-            <div class="icon">💡</div>
-            <h3 data-kk="Креатив идея: «Сен бүгін кімсің?»" data-ru="Креативная идея: «Кто ты сегодня?»">Креатив идея: «Сен бүгін кімсің?»</h3>
-            <p
-              data-kk="Пайдаланушы өз жағдайын таңдайды, ал сайт соған қарай қысқа кеңес береді."
-              data-ru="Пользователь выбирает своё состояние, а сайт даёт короткий совет по выбранному настроению."
-            >
-              Пайдаланушы өз жағдайын таңдайды, ал сайт соған қарай қысқа кеңес береді.
-            </p>
-            <div class="tip-list">
-              <div class="tip-item" data-kk="😁 Бақытты" data-ru="😁 Счастлив(а)">😁 Бақытты</div>
-              <div class="tip-item" data-kk="😌 Шаршаған" data-ru="😌 Устал(а)">😌 Шаршаған</div>
-              <div class="tip-item" data-kk="😡 Ашулы" data-ru="😡 Злой(ая)">😡 Ашулы</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mood-box" style="margin-top: 18px;">
-          <div class="card reveal">
-            <h3 data-kk="Бүгінгі күйіңді таңда" data-ru="Выбери своё состояние на сегодня">Бүгінгі күйіңді таңда</h3>
-            <p style="color: var(--muted); line-height: 1.7;"
-               data-kk="Төмендегі батырмалардың бірін таңда. Сайт саған қысқа қолдау сөзін көрсетеді."
-               data-ru="Выбери одну из кнопок ниже. Сайт покажет тебе короткую поддерживающую рекомендацию.">
-              Төмендегі батырмалардың бірін таңда. Сайт саған қысқа қолдау сөзін көрсетеді.
-            </p>
-
-            <div class="mood-options">
-              <button class="mood-btn" onclick="showMoodAdvice('happy')" data-kk="😁 Бақытты" data-ru="😁 Счастлив(а)">😁 Бақытты</button>
-              <button class="mood-btn" onclick="showMoodAdvice('tired')" data-kk="😌 Шаршаған" data-ru="😌 Устал(а)">😌 Шаршаған</button>
-              <button class="mood-btn" onclick="showMoodAdvice('angry')" data-kk="😡 Ашулы" data-ru="😡 Злой(ая)">😡 Ашулы</button>
-            </div>
-          </div>
-
-          <div class="card mood-result reveal" id="moodAdviceBox">
-            <div id="moodAdviceText"
-                 data-default-kk="Осында саған сәйкес қысқа кеңес шығады ✨"
-                 data-default-ru="Здесь появится короткий совет именно для тебя ✨">
-              Осында саған сәйкес қысқа кеңес шығады ✨
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="advice" class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span data-kk="Психологиялық кеңестер" data-ru="Психологические советы">Психологиялық кеңестер</span>
-          <h2 data-kk="Қысқа, түсінікті және пайдалы кеңестер" data-ru="Короткие, понятные и полезные советы">Қысқа, түсінікті және пайдалы кеңестер</h2>
-        </div>
-
-        <div class="grid-3">
-          <div class="advice-card reveal">
-            <div class="icon">🧠</div>
-            <h3 data-kk="Заманауи психология" data-ru="Современная психология">Заманауи психология</h3>
-            <p
-              data-kk="Эмоцияңды таны: «Мен қазір не сезіп тұрмын?» деп сұра. Позитивті self-talk қолдан. Қателікті мүмкіндік деп қабылда. Күнделік жүргізу — стресс азайтады."
-              data-ru="Распознавай эмоции: спрашивай себя «Что я сейчас чувствую?». Используй позитивный self-talk. Ошибку воспринимай как возможность. Ведение дневника снижает стресс."
-            >
-              Эмоцияңды таны: «Мен қазір не сезіп тұрмын?» деп сұра. Позитивті self-talk қолдан. Қателікті мүмкіндік деп қабылда. Күнделік жүргізу — стресс азайтады.
+        <div class="features-grid">
+          <div class="feature reveal">
+            <div class="icon-box">🌍</div>
+            <h3 data-kk="Екі тілде" data-ru="На двух языках">Екі тілде</h3>
+            <p data-kk="Алдымен қазақша, қажет болса орысшаға бір батырмамен ауысады."
+               data-ru="Сначала казахский, при необходимости можно переключиться на русский одной кнопкой.">
+              Алдымен қазақша, қажет болса орысшаға бір батырмамен ауысады.
             </p>
           </div>
 
-          <div class="advice-card reveal">
-            <div class="icon">⏰</div>
-            <h3 data-kk="Тайм-менеджмент" data-ru="Тайм-менеджмент">Тайм-менеджмент</h3>
-            <p
-              data-kk="Күнге 3 маңызды іс жоспарла. 25 минут оқу + 5 минут демалу форматын байқап көр. Телефонды шектеп, маңызды мен шұғылды ажырата біл."
-              data-ru="Планируй 3 важных дела в день. Попробуй формат 25 минут работы + 5 минут отдыха. Ограничивай телефон и различай важное и срочное."
-            >
-              Күнге 3 маңызды іс жоспарла. 25 минут оқу + 5 минут демалу форматын байқап көр. Телефонды шектеп, маңызды мен шұғылды ажырата біл.
+          <div class="feature reveal">
+            <div class="icon-box">🫶</div>
+            <h3 data-kk="Жұмсақ формат" data-ru="Бережный формат">Жұмсақ формат</h3>
+            <p data-kk="Қысымсыз, түсінікті, жылы мәтіндер мен визуал қолданылған."
+               data-ru="Используется мягкий, понятный и поддерживающий тон без давления.">
+              Қысымсыз, түсінікті, жылы мәтіндер мен визуал қолданылған.
             </p>
           </div>
 
-          <div class="advice-card reveal">
-            <div class="icon">💰</div>
-            <h3 data-kk="Қаржылық сауат" data-ru="Финансовая грамотность">Қаржылық сауат</h3>
-            <p
-              data-kk="Ақшаңды 3 бөлікке бөл: жинақ, қажеттілік, қалауың. Артық шығынды бақыла. Аз болса да үнемдеуді баста. Ақшаны басқару — дағды."
-              data-ru="Дели деньги на 3 части: накопления, нужды и желания. Контролируй лишние траты. Начни откладывать даже понемногу. Управление деньгами — это навык."
-            >
-              Ақшаңды 3 бөлікке бөл: жинақ, қажеттілік, қалауың. Артық шығынды бақыла. Аз болса да үнемдеуді баста. Ақшаны басқару — дағды.
+          <div class="feature reveal">
+            <div class="icon-box">🔒</div>
+            <h3 data-kk="Анонимді" data-ru="Анонимно">Анонимді</h3>
+            <p data-kk="Жеке мәліметсіз де өзіңнің күйіңді бағалап, тесттерден өтуге болады."
+               data-ru="Можно проходить тесты и отмечать своё состояние без личных данных.">
+              Жеке мәліметсіз де өзіңнің күйіңді бағалап, тесттерден өтуге болады.
             </p>
           </div>
 
-          <div class="advice-card reveal">
-            <div class="icon">🤝</div>
-            <h3 data-kk="Ұжымда жұмыс" data-ru="Работа в команде">Ұжымда жұмыс</h3>
-            <p
-              data-kk="Басқаларды тыңда. Өз ойыңды ашық жеткіз. Міндеттерді бөліс. Қақтығысты сабырмен шеш. Бірлік бар жерде — нәтиже бар."
-              data-ru="Умей слушать других. Говори о своих мыслях открыто. Разделяй обязанности. Решай конфликты спокойно. Где есть единство — там есть результат."
-            >
-              Басқаларды тыңда. Өз ойыңды ашық жеткіз. Міндеттерді бөліс. Қақтығысты сабырмен шеш. Бірлік бар жерде — нәтиже бар.
+          <div class="feature reveal">
+            <div class="icon-box">✨</div>
+            <h3 data-kk="Түсінікті нәтиже" data-ru="Понятный результат">Түсінікті нәтиже</h3>
+            <p data-kk="Әр тесттен кейін қарапайым тілде қысқа қорытынды мен бағыт беріледі."
+               data-ru="После каждого теста будет краткий и понятный вывод простым языком.">
+              Әр тесттен кейін қарапайым тілде қысқа қорытынды мен бағыт беріледі.
             </p>
-          </div>
-
-          <div class="advice-card reveal">
-            <div class="icon">❤️</div>
-            <h3 data-kk="Отбасы құндылығы" data-ru="Семейные ценности">Отбасы құндылығы</h3>
-            <p
-              data-kk="Ата-анаңмен сөйлесуді әдетке айналдыр. Ризашылық білдір. Үйде көмектес. Уақытты бірге өткіз. Отбасы — ең үлкен тірек."
-              data-ru="Сделай привычкой общение с родителями. Выражай благодарность. Помогай дома. Проводите время вместе. Семья — твоя главная опора."
-            >
-              Ата-анаңмен сөйлесуді әдетке айналдыр. Ризашылық білдір. Үйде көмектес. Уақытты бірге өткіз. Отбасы — ең үлкен тірек.
-            </p>
-          </div>
-
-          <div class="advice-card reveal">
-            <div class="icon">🌱</div>
-            <h3 data-kk="Мотивация" data-ru="Мотивация">Мотивация</h3>
-            <p
-              data-kk="Сен өз өміріңнің авторысың. Әдеттерің — болашағыңды қалыптастырады. Кішкентай қадам — үлкен нәтиженің басы."
-              data-ru="Ты — автор своей жизни. Твои привычки формируют твоё будущее. Маленький шаг — начало большого результата."
-            >
-              Сен өз өміріңнің авторысың. Әдеттерің — болашағыңды қалыптастырады. Кішкентай қадам — үлкен нәтиженің басы.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span data-kk="Жобаның ерекшелігі" data-ru="Особенности проекта">Жобаның ерекшелігі</span>
-          <h2 data-kk="AigPsychology неліктен ерекше?" data-ru="Чем AigPsychology отличается?">AigPsychology неліктен ерекше?</h2>
-        </div>
-
-        <div class="grid-2">
-          <div class="card reveal">
-            <h3 data-kk="📊 Ерекшелігі (USP)" data-ru="📊 Уникальность (USP)">📊 Ерекшелігі (USP)</h3>
-            <ul class="usp-list">
-              <li data-kk="Жасөспірімдерге арнайы" data-ru="Специально для подростков">Жасөспірімдерге арнайы</li>
-              <li data-kk="Қазақ тілінде басымдықпен" data-ru="С приоритетом казахского языка">Қазақ тілінде басымдықпен</li>
-              <li data-kk="Қарапайым әрі түсінікті интерфейс" data-ru="Простой и понятный интерфейс">Қарапайым әрі түсінікті интерфейс</li>
-              <li data-kk="Тест + кеңес + өмірлік дағды бір жерде" data-ru="Тест + совет + жизненные навыки в одном месте">Тест + кеңес + өмірлік дағды бір жерде</li>
-            </ul>
-          </div>
-
-          <div class="card reveal">
-            <h3 data-kk="🚀 Болашақ даму" data-ru="🚀 Будущее развитие">🚀 Болашақ даму</h3>
-            <ul class="future-list">
-              <li data-kk="AI chat-bot" data-ru="AI chat-bot">AI chat-bot</li>
-              <li data-kk="Онлайн психологпен байланыс" data-ru="Связь с онлайн-психологом">Онлайн психологпен байланыс</li>
-              <li data-kk="Қауымдастық (community)" data-ru="Сообщество (community)">Қауымдастық (community)</li>
-              <li data-kk="Күнделікті эмоция аналитикасы" data-ru="Ежедневная аналитика эмоций">Күнделікті эмоция аналитикасы</li>
-            </ul>
-          </div>
-
-          <div class="card reveal">
-            <h3 data-kk="📈 Құндылығы" data-ru="📈 Ценность">📈 Құндылығы</h3>
-            <ul class="value-list">
-              <li data-kk="Өзін түсінуге көмектеседі" data-ru="Помогает понять себя">Өзін түсінуге көмектеседі</li>
-              <li data-kk="Эмоцияны басқаруға ықпал етеді" data-ru="Помогает управлять эмоциями">Эмоцияны басқаруға ықпал етеді</li>
-              <li data-kk="Өмірде дұрыс шешім қабылдауға бағыт береді" data-ru="Помогает принимать более осознанные решения">Өмірде дұрыс шешім қабылдауға бағыт береді</li>
-              <li data-kk="Психологиялық сауаттылықты арттырады" data-ru="Повышает психологическую грамотность">Психологиялық сауаттылықты арттырады</li>
-            </ul>
-          </div>
-
-          <div class="card reveal">
-            <h3 data-kk="💬 Слоган идеялары" data-ru="💬 Идеи слоганов">💬 Слоган идеялары</h3>
-            <ul class="slogan-list">
-              <li data-kk="«Өзіңді түсін — өміріңді өзгерт»" data-ru="«Пойми себя — измени свою жизнь»">«Өзіңді түсін — өміріңді өзгерт»</li>
-              <li data-kk="«Сен жалғыз емессің»" data-ru="«Ты не один(одна)»">«Сен жалғыз емессің»</li>
-              <li data-kk="«Сенің ішкі әлемің — маңызды»" data-ru="«Твой внутренний мир важен»">«Сенің ішкі әлемің — маңызды»</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -1163,12 +1040,11 @@
     <section class="section">
       <div class="container">
         <div class="card warning reveal">
-          <h3 data-kk="⚠️ Маңызды ескерту" data-ru="⚠️ Важное предупреждение">⚠️ Маңызды ескерту</h3>
-          <p style="margin: 0; color: var(--muted); line-height: 1.8;"
-             data-kk="AigPsychology медициналық сервис емес және маман кеңесін толық алмастырмайды. Егер сен қатты стресс, мазасыздық немесе эмоционалдық қиындық сезінсең, ата-анаңа, мұғалімге, психологқа немесе сенімді адамға жүгін."
-             data-ru="AigPsychology не является медицинским сервисом и не заменяет полноценную консультацию специалиста. Если ты испытываешь сильный стресс, тревогу или эмоциональные трудности, обратись к родителям, учителю, психологу или другому человеку, которому доверяешь."
-          >
-            AigPsychology медициналық сервис емес және маман кеңесін толық алмастырмайды. Егер сен қатты стресс, мазасыздық немесе эмоционалдық қиындық сезінсең, ата-анаңа, мұғалімге, психологқа немесе сенімді адамға жүгін.
+          <h3 data-kk="Маңызды ескерту" data-ru="Важное предупреждение">Маңызды ескерту</h3>
+          <p style="margin:0; color: var(--muted); line-height: 1.8;"
+             data-kk="AigPsychology медициналық сервис емес. Егер сен қатты стресс, мазасыздық немесе эмоционалдық қиындық сезінсең, міндетті түрде сенімді ересек адамға, психологқа немесе маманға жүгін."
+             data-ru="AigPsychology не является медицинским сервисом. Если ты испытываешь сильный стресс, тревожность или эмоциональные трудности, обязательно обратись к взрослому, которому доверяешь, психологу или специалисту.">
+            AigPsychology медициналық сервис емес. Егер сен қатты стресс, мазасыздық немесе эмоционалдық қиындық сезінсең, міндетті түрде сенімді ересек адамға, психологқа немесе маманға жүгін.
           </p>
         </div>
       </div>
@@ -1177,9 +1053,10 @@
 
   <footer class="footer">
     <div class="container">
-      <strong>AigPsychology</strong> — by Aigerim Abzalkyzy <br>
-      <span data-kk="Психологиялық тесттер, кеңестер және өзін тану кеңістігі" data-ru="Психологические тесты, советы и пространство для самопознания">
-        Психологиялық тесттер, кеңестер және өзін тану кеңістігі
+      <strong>AigPsychology</strong> — by Aigerim Abzalkyzy<br>
+      <span data-kk="Психологиялық тесттер мен өзін тануға арналған кеңістік"
+            data-ru="Пространство для психологических тестов и самопознания">
+        Психологиялық тесттер мен өзін тануға арналған кеңістік
       </span>
     </div>
   </footer>
@@ -1189,8 +1066,8 @@
       document.documentElement.lang = lang;
 
       document.querySelectorAll("[data-kk]").forEach(el => {
-        const text = el.getAttribute("data-" + lang);
-        if (text) el.textContent = text;
+        const value = el.getAttribute("data-" + lang);
+        if (value) el.textContent = value;
       });
 
       document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
@@ -1201,42 +1078,102 @@
       }
 
       localStorage.setItem("aig_lang", lang);
+      updateDefaultTexts();
+      setDefaultTip();
+    }
 
-      const moodAdviceText = document.getElementById("moodAdviceText");
-      if (moodAdviceText && !moodAdviceText.dataset.current) {
-        moodAdviceText.textContent = moodAdviceText.getAttribute("data-default-" + lang);
+    function updateDefaultTexts() {
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      const analysis = document.getElementById("analysisText");
+
+      if (!analysis.dataset.selected) {
+        analysis.textContent = analysis.getAttribute("data-default-" + lang);
       }
     }
 
-    function showMoodAdvice(type) {
+    function showAnalysis(type) {
       const lang = localStorage.getItem("aig_lang") || "kk";
-      const box = document.getElementById("moodAdviceText");
+      const analysis = document.getElementById("analysisText");
       let text = "";
 
       if (lang === "kk") {
         if (type === "happy") {
-          text = "Сенің қуанышың — күшің. Осы позитивті күйді сақта: жақындарыңмен бөліс, өзіңе ұнайтын іспен айналыс және бүгінгі күніңе ризашылық білдір ✨";
+          text = "Қазір сенің күйің жақсы. Осы энергияны сақта: өзіңе ұнайтын іспен айналыс, жақыныңмен сөйлес және бүгінгі күнің үшін өзіңе рақмет айт ✨";
         } else if (type === "tired") {
-          text = "Сен шаршаған болуың мүмкін. Өзіңе кішкентай демалыс бер: су іш, телефоннан үзіліс жаса, тыныш музыка тыңда және ертерек ұйықта 🌿";
+          text = "Сен шаршаған сияқтысың. Өзіңе аздап демалыс бер: су іш, телефонды қоя тұр, терең тыныс ал және бүгін өзіңнен көп нәрсе талап етпе 🌿";
         } else if (type === "angry") {
-          text = "Ашу — қалыпты эмоция. Бірақ оны қауіпсіз шығар: терең тыныс ал, бірден жауап берме, 5 минут тыныш отыр да, сезіміңді сөзбен айтып көр 💛";
+          text = "Ішіңде ашу бар болуы мүмкін. Бұл қалыпты. Бірден жауап бермей, аздап тынышталып ал. Терең тыныс алу мен қысқа үзіліс көмектесуі мүмкін 💛";
         }
       } else {
         if (type === "happy") {
-          text = "Твоя радость — это твоя сила. Сохрани это состояние: поделись им с близкими, займись любимым делом и поблагодари себя за сегодняшний день ✨";
+          text = "Похоже, сейчас у тебя хорошее состояние. Сохрани эту энергию: займись любимым делом, поговори с близким человеком и поблагодари себя за сегодняшний день ✨";
         } else if (type === "tired") {
-          text = "Возможно, ты устал(а). Дай себе маленькую паузу: выпей воды, отложи телефон, включи спокойную музыку и постарайся лечь спать пораньше 🌿";
+          text = "Похоже, ты устал(а). Дай себе немного отдыха: попей воды, убери телефон, сделай глубокий вдох и не требуй от себя слишком многого сегодня 🌿";
         } else if (type === "angry") {
-          text = "Злость — нормальная эмоция. Но важно прожить её безопасно: глубоко подыши, не отвечай сразу, посиди 5 минут спокойно и попробуй назвать свои чувства словами 💛";
+          text = "Возможно, внутри есть злость. Это нормально. Не отвечай сразу, дай себе немного успокоиться. Глубокое дыхание и короткая пауза могут помочь 💛";
         }
       }
 
-      box.textContent = text;
-      box.dataset.current = "1";
+      analysis.textContent = text;
+      analysis.dataset.selected = "1";
+      localStorage.setItem("aig_mood_state", type);
+    }
+
+    function showTip(type, btn) {
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      const content = document.getElementById("tipContent");
+
+      document.querySelectorAll(".tip-tab").forEach(tab => tab.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      const tips = {
+        kk: {
+          mindset: "Өз эмоцияңды атаудан баста: «Мен қазір не сезіп тұрмын?». Ой → сезім → әрекет. Егер ойыңды жұмсартсаң, ішкі күйің де жеңілдейді.",
+          time: "Бүгін барлығын істеуге тырыспа. Тек 3 маңызды істі таңда. 25 минут назар қойып, 5 минут демал. Кішкентай қадам да — нәтиже.",
+          money: "Ақшаңды 3 бөлікке бөл: қажет, жинақ, қалауың. Аз болса да бақылау — сенімділік береді. Қаржыны басқару — ерте басталатын дағды.",
+          team: "Басқаларды тыңдай білу — күш. Өз ойыңды тыныш жеткіз, міндеттерді бөліс, эмоциямен емес, құрметпен сөйлес.",
+          family: "Бүгін отбасыңнан бір адамға жылы сөз айт. Қысқа әңгіме мен ризашылықтың өзі көп нәрсені өзгертеді."
+        },
+        ru: {
+          mindset: "Начни с простого: назови свою эмоцию. «Что я сейчас чувствую?». Мысль → чувство → действие. Если смягчить мысль, внутреннее состояние тоже станет легче.",
+          time: "Не пытайся сделать всё сразу. Выбери только 3 важных дела. 25 минут фокуса и 5 минут отдыха — уже хороший шаг.",
+          money: "Раздели деньги на 3 части: нужды, накопления и желания. Даже небольшой контроль даёт больше уверенности. Финансовая привычка формируется заранее.",
+          team: "Умение слушать — это сила. Говори спокойно, дели задачи и старайся решать ситуации уважительно, а не на эмоциях.",
+          family: "Скажи сегодня одному человеку из семьи что-то тёплое. Даже короткий разговор и благодарность могут многое изменить."
+        }
+      };
+
+      content.textContent = tips[lang][type];
+      localStorage.setItem("aig_tip_type", type);
+    }
+
+    function setDefaultTip() {
+      const savedTip = localStorage.getItem("aig_tip_type") || "mindset";
+      const buttons = document.querySelectorAll(".tip-tab");
+      let matchedButton = null;
+
+      buttons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      if (buttons[0]) {
+        if (savedTip === "mindset") matchedButton = buttons[0];
+        if (savedTip === "time") matchedButton = buttons[1];
+        if (savedTip === "money") matchedButton = buttons[2];
+        if (savedTip === "team") matchedButton = buttons[3];
+        if (savedTip === "family") matchedButton = buttons[4];
+      }
+
+      showTip(savedTip, matchedButton);
     }
 
     const savedLang = localStorage.getItem("aig_lang") || "kk";
     setLanguage(savedLang);
+
+    const savedMood = localStorage.getItem("aig_mood_state");
+    if (savedMood) {
+      showAnalysis(savedMood);
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
