@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AigPsychology — Тесттер</title>
+  <meta name="description" content="AigPsychology психологиялық тесттері: стресс, көңіл-күй, мазасыздық және өзін-өзі бағалау." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg1: #f8f5ff;
+      --bg2: #eef7ff;
+      --bg3: #fff8fc;
+      --text: #221d32;
+      --muted: #716c87;
+      --primary: #7c5cff;
+      --primary-dark: #5f46da;
+      --accent: #ff7eb6;
+      --card: rgba(255,255,255,.76);
+      --border: rgba(255,255,255,.58);
+      --shadow: 0 20px 60px rgba(110, 90, 180, .15);
+      --shadow-soft: 0 10px 30px rgba(110, 90, 180, .10);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans", "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(203, 176, 255, 0.45), transparent 23%),
+        radial-gradient(circle at 90% 20%, rgba(159, 229, 255, 0.45), transparent 23%),
+        radial-gradient(circle at 80% 90%, rgba(255, 182, 216, 0.35), transparent 23%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.42);
+      border-bottom: 1px solid rgba(255,255,255,.42);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .brand-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: .86rem;
+      margin-top: 4px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.56);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .hero {
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.08;
+      margin: 0 0 12px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .section {
+      padding: 28px 0 70px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-title span {
+      color: var(--primary-dark);
+      font-weight: 800;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.6rem);
+      line-height: 1.15;
+    }
+
+    .test-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 24px 0 0;
+    }
+
+    .test-nav a {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(255,255,255,.58);
+      box-shadow: var(--shadow-soft);
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .test-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      margin-bottom: 28px;
+    }
+
+    .test-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .test-card p.test-desc {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .question {
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .question-title {
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.58);
+      cursor: pointer;
+      transition: .2s ease;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 22px;
+      cursor: pointer;
+      font-weight: 800;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(255,255,255,.58);
+      color: var(--text);
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.58);
+      line-height: 1.8;
+      color: var(--muted);
+      display: none;
+    }
+
+    .result-box.show {
+      display: block;
+    }
+
+    .result-box strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .footer {
+      padding: 30px 0 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 0;
+      }
+
+      .nav-right {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .test-card {
+        padding: 18px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="AigPsychology logo" class="logo">
+        <div>
+          <div class="brand-title">AigPsychology</div>
+          <div class="brand-subtitle">by Aigerim Abzalkyzy</div>
+        </div>
+      </a>
+
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html" data-kk="Басты бет" data-ru="Главная">Басты бет</a>
+          <a href="#stress" data-kk="Стресс" data-ru="Стресс">Стресс</a>
+          <a href="#mood" data-kk="Көңіл-күй" data-ru="Настроение">Көңіл-күй</a>
+          <a href="#anxiety" data-kk="Мазасыздық" data-ru="Тревожность">Мазасыздық</a>
+          <a href="#selfesteem" data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</a>
+        </nav>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="setLanguage('kk')">KZ</button>
+          <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 data-kk="Психологиялық тесттер" data-ru="Психологические тесты">Психологиялық тесттер</h1>
+      <p
+        data-kk="Төмендегі тесттер арқылы өзіңнің ішкі жағдайыңды жақсырақ түсініп, қысқа қорытынды мен пайдалы кеңес ала аласың."
+        data-ru="С помощью тестов ниже ты сможешь лучше понять своё внутреннее состояние и получить краткий результат с полезной рекомендацией."
+      >
+        Төмендегі тесттер арқылы өзіңнің ішкі жағдайыңды жақсырақ түсініп, қысқа қорытынды мен пайдалы кеңес ала аласың.
+      </p>
+
+      <div class="test-nav">
+        <a href="#stress" data-kk="Стресс тесті" data-ru="Тест на стресс">Стресс тесті</a>
+        <a href="#mood" data-kk="Көңіл-күй тесті" data-ru="Тест настроения">Көңіл-күй тесті</a>
+        <a href="#anxiety" data-kk="Мазасыздық тесті" data-ru="Тест тревожности">Мазасыздық тесті</a>
+        <a href="#selfesteem" data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- STRESS -->
+      <section id="stress" class="test-card">
+        <h3 data-kk="Стресс тесті" data-ru="Тест на стресс">Стресс тесті</h3>
+        <p class="test-desc"
+           data-kk="Соңғы уақыттағы күйің мен ішкі қысым деңгейін бағалауға арналған."
+           data-ru="Тест для оценки внутреннего напряжения и уровня стресса за последнее время.">
+          Соңғы уақыттағы күйің мен ішкі қысым деңгейін бағалауға арналған.
+        </p>
+
+        <form id="stressForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateStress()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('stressForm','stressResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="stressResult"></div>
+      </section>
+
+      <!-- MOOD -->
+      <section id="mood" class="test-card">
+        <h3 data-kk="Көңіл-күй тесті" data-ru="Тест настроения">Көңіл-күй тесті</h3>
+        <p class="test-desc"
+           data-kk="Қазіргі эмоционалдық жағдайыңды бағалауға көмектеседі."
+           data-ru="Помогает оценить твоё текущее эмоциональное состояние.">
+          Қазіргі эмоционалдық жағдайыңды бағалауға көмектеседі.
+        </p>
+
+        <form id="moodForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateMood()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('moodForm','moodResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="moodResult"></div>
+      </section>
+
+      <!-- ANXIETY -->
+      <section id="anxiety" class="test-card">
+        <h3 data-kk="Мазасыздық тесті" data-ru="Тест тревожности">Мазасыздық тесті</h3>
+        <p class="test-desc"
+           data-kk="Ішкі уайым мен мазасыздық деңгейін анықтауға көмектеседі."
+           data-ru="Помогает определить уровень внутреннего беспокойства и тревожности.">
+          Ішкі уайым мен мазасыздық деңгейін анықтауға көмектеседі.
+        </p>
+
+        <form id="anxietyForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateAnxiety()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('anxietyForm','anxietyResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="anxietyResult"></div>
+      </section>
+
+      <!-- SELF ESTEEM -->
+      <section id="selfesteem" class="test-card">
+        <h3 data-kk="Өзін-өзі бағалау тесті" data-ru="Тест самооценки">Өзін-өзі бағалау тесті</h3>
+        <p class="test-desc"
+           data-kk="Өзіңе деген көзқарас пен сенімділік деңгейін анықтауға арналған."
+           data-ru="Тест для определения отношения к себе и уровня уверенности в себе.">
+          Өзіңе деген көзқарас пен сенімділік деңгейін анықтауға арналған.
+        </p>
+
+        <form id="selfesteemForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateSelfEsteem()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('selfesteemForm','selfesteemResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="selfesteemResult"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      AigPsychology — by Aigerim Abzalkyzy
+    </div>
+  </footer>
+
+  <script>
+    const stressQuestions = [
+      {
+        kk: "Өзіңді соңғы уақытта қалай сезінесің?",
+        ru: "Как ты себя чувствуешь в последнее время?",
+        options: {
+          kk: ["Өте тыныш", "Кейде уайымдаймын", "Жиі шаршаймын", "Қатты қысым сезінемін"],
+          ru: ["Очень спокойно", "Иногда переживаю", "Часто устаю", "Чувствую сильное напряжение"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Оқу немесе жұмыс кезінде қысым бола ма?",
+        ru: "Есть ли давление во время учебы или работы?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Шаршау деңгейің қандай?",
+        ru: "Какой у тебя уровень усталости?",
+        options: {
+          kk: ["Шаршамаймын", "Аздап шаршаймын", "Жиі шаршаймын", "Өте қатты шаршаймын"],
+          ru: ["Почти не устаю", "Немного устаю", "Часто устаю", "Очень сильно устаю"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Ұйқың қалай?",
+        ru: "Как у тебя со сном?",
+        options: {
+          kk: ["Жақсы", "Кейде бұзылады", "Жиі бұзылады", "Өте нашар"],
+          ru: ["Хорошо", "Иногда нарушается", "Часто нарушается", "Очень плохо"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Сен ашуланшақ болып кеттің бе?",
+        ru: "Стал(а) ли ты более раздражительным(ой)?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Басыңда көп ой бола ма?",
+        ru: "Много ли мыслей у тебя в голове?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Тоқтамайды"],
+          ru: ["Нет", "Иногда", "Часто", "Почти не прекращаются"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Демалу қиын ба?",
+        ru: "Трудно ли тебе расслабиться?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте қиын"],
+          ru: ["Нет", "Иногда", "Часто", "Очень трудно"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Көңіл-күйің тұрақсыз ба?",
+        ru: "Нестабильно ли у тебя настроение?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Өзіңді жалғыз сезінесің бе?",
+        ru: "Чувствуешь ли ты себя одиноко?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 2, 4, 6]
+      },
+      {
+        kk: "Соңғы уақытта ішкі қысым қатты ма?",
+        ru: "Сильное ли у тебя внутреннее напряжение в последнее время?",
+        options: {
+          kk: ["Жоқ", "Аздап", "Жиі", "Өте қатты"],
+          ru: ["Нет", "Немного", "Часто", "Очень сильное"]
+        },
+        scores: [0, 2, 4, 6]
+      }
+    ];
+
+    const moodQuestions = [
+      {
+        kk: "Қазір көңіл-күйің қандай?",
+        ru: "Какое у тебя сейчас настроение?",
+        options: {
+          kk: ["Өте жақсы 😄", "Жақсы 🙂", "Орташа 😐", "Жаман 😞"],
+          ru: ["Очень хорошее 😄", "Хорошее 🙂", "Среднее 😐", "Плохое 😞"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Соңғы күндері өзіңді қалай сезінесің?",
+        ru: "Как ты себя чувствуешь в последние дни?",
+        options: {
+          kk: ["Қуанышты, энергия көп", "Жақсы, бірақ шаршау бар", "Көбіне бейтарап", "Мұңды, көңілсіз"],
+          ru: ["Радостно, много энергии", "Нормально, но есть усталость", "Чаще нейтрально", "Грустно, без настроения"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Күнделікті істерге қызығушылығың?",
+        ru: "Есть ли интерес к повседневным делам?",
+        options: {
+          kk: ["Өте жоғары", "Орташа", "Аз", "Мүлде жоқ"],
+          ru: ["Очень высокий", "Средний", "Низкий", "Совсем нет"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Достармен сөйлескің келе ме?",
+        ru: "Хочется ли тебе общаться с друзьями?",
+        options: {
+          kk: ["Иә, әрқашан", "Кейде", "Сирек", "Мүлде келмейді"],
+          ru: ["Да, всегда", "Иногда", "Редко", "Совсем не хочется"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Ұйқың қалай?",
+        ru: "Как у тебя со сном?",
+        options: {
+          kk: ["Жақсы, тыныш", "Кейде қиын", "Жиі бұзылады", "Өте нашар"],
+          ru: ["Хороший, спокойный", "Иногда тяжело", "Часто нарушается", "Очень плохой"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Өзіңе деген көзқарасың?",
+        ru: "Какое у тебя отношение к себе?",
+        options: {
+          kk: ["Өте жақсы", "Жақсы", "Орташа", "Нашар"],
+          ru: ["Очень хорошее", "Хорошее", "Среднее", "Плохое"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Болашақ туралы ойың?",
+        ru: "Что ты думаешь о будущем?",
+        options: {
+          kk: ["Оптимистік, сенімді", "Жақсы", "Белгісіз", "Уайым көп"],
+          ru: ["Оптимистично, уверенно", "Нормально", "Неопределённо", "Много тревоги"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Күлу, қуану жиілігің?",
+        ru: "Как часто ты смеёшься и радуешься?",
+        options: {
+          kk: ["Көп", "Кейде", "Сирек", "Мүлде жоқ"],
+          ru: ["Часто", "Иногда", "Редко", "Почти никогда"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Жалғыз қалғың келе ме?",
+        ru: "Хочется ли тебе быть одному(одной)?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Әрқашан"],
+          ru: ["Нет", "Иногда", "Часто", "Постоянно"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Көңілің тез өзгере ме?",
+        ru: "Быстро ли меняется твоё настроение?",
+        options: {
+          kk: ["Жоқ, тұрақты", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет, стабильное", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [3, 2, 1, 0]
+      }
+    ];
+
+    const anxietyQuestions = [
+      {
+        kk: "Себепсіз уайымдайсың ба?",
+        ru: "Беспокоишься ли ты без причины?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Болашақ туралы ойлағанда не сезінесің?",
+        ru: "Что ты чувствуешь, когда думаешь о будущем?",
+        options: {
+          kk: ["Сенімділік", "Аздап уайым", "Қорқыныш", "Қатты мазасыздық"],
+          ru: ["Уверенность", "Небольшое волнение", "Страх", "Сильную тревогу"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Жүрегің тез соғатын кездер бола ма?",
+        ru: "Бывает ли, что сердце бьётся слишком быстро?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Ұйықтар алдында ойлар мазалай ма?",
+        ru: "Мешают ли мысли перед сном?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Әрқашан"],
+          ru: ["Нет", "Иногда", "Часто", "Всегда"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Көп нәрсе туралы артық ойлайсың ба?",
+        ru: "Склонен(на) ли ты слишком много думать обо всём?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Тоқтата алмаймын"],
+          ru: ["Нет", "Иногда", "Часто", "Не могу остановиться"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Қорқыныш немесе үрей сезімі болады ма?",
+        ru: "Бывает ли чувство страха или тревоги?",
+        options: {
+          kk: ["Жоқ", "Сирек", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Редко", "Часто", "Очень часто"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Адамдармен сөйлескенде қысылу бар ма?",
+        ru: "Есть ли скованность при общении с людьми?",
+        options: {
+          kk: ["Жоқ", "Аздап", "Жиі", "Өте қатты"],
+          ru: ["Нет", "Немного", "Часто", "Очень сильная"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Денеде мазасыздық белгілері бар ма? (терлеу, діріл)",
+        ru: "Есть ли телесные признаки тревоги? (дрожь, потливость)",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Өте жиі"],
+          ru: ["Нет", "Иногда", "Часто", "Очень часто"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Демалу қиын ба?",
+        ru: "Трудно ли тебе расслабиться?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Мүлде демала алмаймын"],
+          ru: ["Нет", "Иногда", "Часто", "Совсем не могу расслабиться"]
+        },
+        scores: [0, 1, 2, 3]
+      },
+      {
+        kk: "Өз ойларыңды тоқтату қиын ба?",
+        ru: "Трудно ли остановить свои мысли?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Мүлде тоқтата алмаймын"],
+          ru: ["Нет", "Иногда", "Часто", "Совсем не могу остановить"]
+        },
+        scores: [0, 1, 2, 3]
+      }
+    ];
+
+    const selfesteemQuestions = [
+      {
+        kk: "Өзіңе деген көзқарасың қандай?",
+        ru: "Какое у тебя отношение к себе?",
+        options: {
+          kk: ["Өте жақсы, өзімді қабылдаймын", "Жақсы", "Кейде өзімді ұнатпаймын", "Өзімді мүлде ұнатпаймын"],
+          ru: ["Очень хорошее, я принимаю себя", "Хорошее", "Иногда не нравлюсь себе", "Совсем себе не нравлюсь"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Қателік жасасаң не істейсің?",
+        ru: "Что ты делаешь, если ошибаешься?",
+        options: {
+          kk: ["Қабылдаймын, үйренемін", "Аздап уайымдаймын", "Өзімді кінәлаймын", "Қатты өзімді жек көремін"],
+          ru: ["Принимаю и учусь", "Немного переживаю", "Виню себя", "Сильно ненавижу себя"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Басқалармен салыстырасың ба?",
+        ru: "Сравниваешь ли ты себя с другими?",
+        options: {
+          kk: ["Жоқ", "Кейде", "Жиі", "Әрқашан"],
+          ru: ["Нет", "Иногда", "Часто", "Всегда"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Комплимент алғанда не сезінесің?",
+        ru: "Что ты чувствуешь, когда получаешь комплимент?",
+        options: {
+          kk: ["Қуанып, қабылдаймын", "Ұяламын", "Сенбеймін", "Өзімді лайық емес сезінемін"],
+          ru: ["Радуюсь и принимаю", "Смущаюсь", "Не верю", "Чувствую, что не заслуживаю"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Жаңа нәрсе бастауға қалай қарайсың?",
+        ru: "Как ты относишься к началу нового?",
+        options: {
+          kk: ["Сенімдімін", "Аздап қорқамын", "Көп күмәнданамын", "Бастауға қорқамын"],
+          ru: ["Уверенно", "Немного боюсь", "Сильно сомневаюсь", "Боюсь начинать"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Өз жетістіктеріңді қалай бағалайсың?",
+        ru: "Как ты оцениваешь свои достижения?",
+        options: {
+          kk: ["Мақтанамын", "Қалыпты", "Маңызды емес деп ойлаймын", "Ештеңеге тұрмайды"],
+          ru: ["Горжусь ими", "Нормально", "Считаю их неважными", "Считаю их ничтожными"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Сын қабылдау?",
+        ru: "Как ты воспринимаешь критику?",
+        options: {
+          kk: ["Қалыпты қабылдаймын", "Аздап ренжимін", "Қатты әсер етеді", "Ұзақ уақыт ұмыта алмаймын"],
+          ru: ["Нормально", "Немного обижаюсь", "Сильно задевает", "Долго не могу забыть"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Өз ойыңды ашық айтасың ба?",
+        ru: "Можешь ли ты открыто выражать своё мнение?",
+        options: {
+          kk: ["Иә, еркін", "Кейде", "Сирек", "Жоқ"],
+          ru: ["Да, свободно", "Иногда", "Редко", "Нет"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Өз болашағыңа сенесің бе?",
+        ru: "Веришь ли ты в своё будущее?",
+        options: {
+          kk: ["Иә, толық", "Аздап", "Күмән бар", "Сенбеймін"],
+          ru: ["Да, полностью", "Немного", "Есть сомнения", "Не верю"]
+        },
+        scores: [3, 2, 1, 0]
+      },
+      {
+        kk: "Жалпы өзіңді қалай бағалайсың?",
+        ru: "Как в целом ты оцениваешь себя?",
+        options: {
+          kk: ["Құнды адаммын", "Қалыпты адаммын", "Әлсіз жақтарым көп", "Өзімді төмен бағалаймын"],
+          ru: ["Я ценный человек", "Я обычный человек", "У меня много слабых сторон", "Я низко себя оцениваю"]
+        },
+        scores: [3, 2, 1, 0]
+      }
+    ];
+
+    function renderQuestions(formId, questions, testName) {
+      const form = document.getElementById(formId);
+      form.innerHTML = "";
+
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        const lang = localStorage.getItem("aig_lang") || "kk";
+
+        let optionsHtml = "";
+        q.options[lang].forEach((option, optIndex) => {
+          optionsHtml += `
+            <label class="option">
+              <input type="radio" name="${testName}_${index}" value="${q.scores[optIndex]}">
+              ${option}
+            </label>
+          `;
+        });
+
+        div.innerHTML = `
+          <div class="question-title">${index + 1}. ${q[lang]}</div>
+          <div class="options">${optionsHtml}</div>
+        `;
+        form.appendChild(div);
+      });
+    }
+
+    function getScore(formId, testName, questionsCount) {
+      let total = 0;
+      for (let i = 0; i < questionsCount; i++) {
+        const checked = document.querySelector(`input[name="${testName}_${i}"]:checked`);
+        if (!checked) return null;
+        total += Number(checked.value);
+      }
+      return total;
+    }
+
+    function showResult(resultId, title, text) {
+      const box = document.getElementById(resultId);
+      box.innerHTML = `<strong>${title}</strong>${text}`;
+      box.classList.add("show");
+    }
+
+    function calculateStress() {
+      const score = getScore("stressForm", "stress", stressQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      if (score === null) {
+        showResult("stressResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (score <= 15) showResult("stressResult", `😊 0–15 балл — Төмен стресс деңгейі`, `Сенің эмоционалдық жағдайың тұрақты. Көңіл-күйің жақсы, сен қиындықтарды жеңе аласың.<br><br>🌿 Кеңес: жақсы ұйқы, демалыс және жақындармен қарым-қатынасты сақта.`);
+        else if (score <= 30) showResult("stressResult", `😐 16–30 балл — Орташа стресс деңгейі`, `Кейде сен шаршайсың немесе уайымдайсың. Бұл қалыпты, бірақ өз күйіңе назар аудару керек.<br><br>🌿 Кеңес: көбірек демал, экран уақытын азайт, өзіңе уақыт бөл.`);
+        else if (score <= 45) showResult("stressResult", `😟 31–45 балл — Жоғары стресс деңгейі`, `Сенде стресс көбейген. Бұл оқу мен көңіл-күйге әсер етуі мүмкін.<br><br>🌿 Кеңес: сенімді адаммен сөйлес, демалысқа уақыт бөл, өзіңді жалғыз қалдырма.`);
+        else showResult("stressResult", `⚠️ 46–60 балл — Өте жоғары стресс деңгейі`, `Сен қатты шаршаған болуың мүмкін және эмоционалдық қысым жоғары.<br><br>🌿 Кеңес: міндетті түрде ата-ана, мұғалім немесе психолог сияқты сенімді ересек адамнан көмек сұра.`);
+      } else {
+        if (score <= 15) showResult("stressResult", `😊 0–15 баллов — Низкий уровень стресса`, `Твоё эмоциональное состояние достаточно стабильное. Настроение в целом хорошее, ты справляешься с трудностями.<br><br>🌿 Совет: сохраняй сон, отдых и общение с близкими.`);
+        else if (score <= 30) showResult("stressResult", `😐 16–30 баллов — Средний уровень стресса`, `Иногда ты устаёшь или переживаешь. Это нормально, но важно обращать внимание на своё состояние.<br><br>🌿 Совет: больше отдыхай, сократи время в телефоне и уделяй время себе.`);
+        else if (score <= 45) showResult("stressResult", `😟 31–45 баллов — Высокий уровень стресса`, `Стресса стало больше, и это может влиять на учёбу и настроение.<br><br>🌿 Совет: поговори с человеком, которому доверяешь, и не оставайся с этим один(одна).`);
+        else showResult("stressResult", `⚠️ 46–60 баллов — Очень высокий уровень стресса`, `Похоже, ты сильно устал(а) и находишься в эмоционально трудном состоянии.<br><br>🌿 Совет: обязательно обратись за поддержкой к взрослому, психологу или другому специалисту.`);
+      }
+    }
+
+    function calculateMood() {
+      const score = getScore("moodForm", "mood", moodQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      if (score === null) {
+        showResult("moodResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (score >= 24) showResult("moodResult", `😄 24–30 балл — Өте жақсы көңіл-күй`, `Сен энергияға толысың! Өмірге позитивпен қарайсың ✨`);
+        else if (score >= 16) showResult("moodResult", `🙂 16–23 балл — Жақсы көңіл-күй`, `Жалпы бәрі жақсы, бірақ кейде шаршау болуы мүмкін.`);
+        else if (score >= 8) showResult("moodResult", `😐 8–15 балл — Орташа`, `Көңіл-күйің тұрақсыз болуы мүмкін, демалыс пен қолдау қажет.`);
+        else showResult("moodResult", `😞 0–7 балл — Төмен көңіл-күй`, `Саған қазір қиын болуы мүмкін.<br><br>👉 Жақын адамдармен сөйлесіп көр, өзіңді жалғыз қалдырма.`);
+      } else {
+        if (score >= 24) showResult("moodResult", `😄 24–30 баллов — Очень хорошее настроение`, `Ты полон(а) энергии и смотришь на жизнь позитивно ✨`);
+        else if (score >= 16) showResult("moodResult", `🙂 16–23 балла — Хорошее настроение`, `В целом всё неплохо, но иногда может ощущаться усталость.`);
+        else if (score >= 8) showResult("moodResult", `😐 8–15 баллов — Среднее состояние`, `Настроение может быть нестабильным, тебе нужен отдых и поддержка.`);
+        else showResult("moodResult", `😞 0–7 баллов — Низкое настроение`, `Сейчас тебе может быть непросто.<br><br>👉 Попробуй поговорить с близкими и не оставаться наедине с этим.`);
+      }
+    }
+
+    function calculateAnxiety() {
+      const score = getScore("anxietyForm", "anxiety", anxietyQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      if (score === null) {
+        showResult("anxietyResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (score <= 10) showResult("anxietyResult", `😊 0–10 балл — Төмен мазасыздық`, `Сен сабырлысың, жағдайды бақылауда ұстай аласың.`);
+        else if (score <= 20) showResult("anxietyResult", `😐 11–20 балл — Орташа`, `Кейде мазасыздық бар, бірақ оны басқаруға болады.`);
+        else if (score <= 25) showResult("anxietyResult", `😟 21–25 балл — Жоғары`, `Мазасыздық жиі байқалады.<br><br>👉 Демалу, тыныс алу жаттығулары көмектесуі мүмкін.`);
+        else showResult("anxietyResult", `⚠️ 26–30 балл — Өте жоғары`, `Сен қатты мазасызданасың.<br><br>👉 Біреумен сөйлесу немесе маман көмегі пайдалы болуы мүмкін.`);
+      } else {
+        if (score <= 10) showResult("anxietyResult", `😊 0–10 баллов — Низкая тревожность`, `Ты достаточно спокоен(на) и можешь держать ситуацию под контролем.`);
+        else if (score <= 20) showResult("anxietyResult", `😐 11–20 баллов — Средняя тревожность`, `Иногда тревожность есть, но ею можно управлять.`);
+        else if (score <= 25) showResult("anxietyResult", `😟 21–25 баллов — Высокая тревожность`, `Тревожность проявляется довольно часто.<br><br>👉 Могут помочь отдых и дыхательные упражнения.`);
+        else showResult("anxietyResult", `⚠️ 26–30 баллов — Очень высокая тревожность`, `Похоже, тревожность выражена сильно.<br><br>👉 Поддержка близкого человека или специалиста может быть очень полезной.`);
+      }
+    }
+
+    function calculateSelfEsteem() {
+      const score = getScore("selfesteemForm", "selfesteem", selfesteemQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
+      if (score === null) {
+        showResult("selfesteemResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (score >= 24) showResult("selfesteemResult", `🌟 24–30 балл — Жоғары өзін-өзі бағалау`, `Сен өзіңді бағалайсың, сенімдісің. Бұл — күш 💪`);
+        else if (score >= 16) showResult("selfesteemResult", `🙂 16–23 балл — Орташа`, `Жалпы жақсы, бірақ кейде өзіңе сенім жетіспеуі мүмкін.`);
+        else if (score >= 8) showResult("selfesteemResult", `😕 8–15 балл — Төмен`, `Өзіңе сенім аздау, өзіңді жиі сынауың мүмкін.`);
+        else showResult("selfesteemResult", `⚠️ 0–7 балл — Өте төмен`, `Сен өзіңді қатты төмен бағалайсың.<br><br>👉 Өзіңе жұмсақ болуды және өз құндылығыңды көруді үйрену маңызды.`);
+      } else {
+        if (score >= 24) showResult("selfesteemResult", `🌟 24–30 баллов — Высокая самооценка`, `Ты ценишь себя и чувствуешь уверенность. Это твоя сила 💪`);
+        else if (score >= 16) showResult("selfesteemResult", `🙂 16–23 балла — Средняя самооценка`, `В целом всё неплохо, но временами может не хватать уверенности в себе.`);
+        else if (score >= 8) showResult("selfesteemResult", `😕 8–15 баллов — Низкая самооценка`, `Уверенности в себе меньше, и ты можешь часто критиковать себя.`);
+        else showResult("selfesteemResult", `⚠️ 0–7 баллов — Очень низкая самооценка`, `Ты оцениваешь себя слишком низко.<br><br>👉 Важно учиться относиться к себе мягче и замечать свою ценность.`);
+      }
+    }
+
+    function resetForm(formId, resultId) {
+      document.getElementById(formId).reset();
+      const result = document.getElementById(resultId);
+      result.classList.remove("show");
+      result.innerHTML = "";
+    }
+
+    function renderAll() {
+      renderQuestions("stressForm", stressQuestions, "stress");
+      renderQuestions("moodForm", moodQuestions, "mood");
+      renderQuestions("anxietyForm", anxietyQuestions, "anxiety");
+      renderQuestions("selfesteemForm", selfesteemQuestions, "selfesteem");
+    }
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-kk]").forEach(el => {
+        const value = el.getAttribute("data-" + lang);
+        if (value) el.textContent = value;
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+      if (lang === "kk") {
+        document.querySelectorAll(".lang-btn")[0].classList.add("active");
+      } else {
+        document.querySelectorAll(".lang-btn")[1].classList.add("active");
+      }
+
+      localStorage.setItem("aig_lang", lang);
+      renderAll();
+    }
+
+    const savedLang = localStorage.getItem("aig_lang") || "kk";
+    setLanguage(savedLang);
+  </script>
+</body>
+</html>
