@@ -370,7 +370,7 @@
   <header class="header">
     <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="AigPsychology logo" class="logo">
+        <img src="logo.jpeg" alt="AigPsychology logo" class="logo">
         <div>
           <div class="brand-title">AigPsychology</div>
           <div class="brand-subtitle">by Aigerim Abzalkyzy</div>
@@ -384,6 +384,8 @@
           <a href="#mood" data-kk="Көңіл-күй" data-ru="Настроение">Көңіл-күй</a>
           <a href="#anxiety" data-kk="Мазасыздық" data-ru="Тревожность">Мазасыздық</a>
           <a href="#selfesteem" data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</a>
+          <a href="#temperament" data-kk="Темперамент" data-ru="Темперамент">Темперамент</a>
+          <a href="#ikigai" data-kk="Ikigai" data-ru="Ikigai">Ikigai</a>
         </nav>
 
         <div class="lang-switch">
@@ -409,6 +411,8 @@
         <a href="#mood" data-kk="Көңіл-күй тесті" data-ru="Тест настроения">Көңіл-күй тесті</a>
         <a href="#anxiety" data-kk="Мазасыздық тесті" data-ru="Тест тревожности">Мазасыздық тесті</a>
         <a href="#selfesteem" data-kk="Өзін-өзі бағалау" data-ru="Самооценка">Өзін-өзі бағалау</a>
+        <a href="#temperament" data-kk="Темперамент" data-ru="Темперамент">Темперамент</a>
+        <a href="#ikigai" data-kk="Ikigai" data-ru="Ikigai">Ikigai</a>
       </div>
     </div>
   </section>
@@ -492,6 +496,44 @@
         <div class="result-box" id="selfesteemResult"></div>
       </section>
 
+            <!-- TEMPERAMENT -->
+      <section id="temperament" class="test-card">
+        <h3 data-kk="Темперамент тесті" data-ru="Тест на темперамент">Темперамент тесті</h3>
+        <p class="test-desc"
+           data-kk="Сенің мінез ерекшелігіңе жақын темперамент түрін анықтауға көмектеседі."
+           data-ru="Помогает определить тип темперамента, который ближе твоему характеру.">
+          Сенің мінез ерекшелігіңе жақын темперамент түрін анықтауға көмектеседі.
+        </p>
+
+        <form id="temperamentForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateTemperament()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('temperamentForm','temperamentResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="temperamentResult"></div>
+      </section>
+
+      <!-- IKIGAI -->
+      <section id="ikigai" class="test-card">
+        <h3 data-kk="Ikigai мамандық бағыты" data-ru="Ikigai и направление профессии">Ikigai мамандық бағыты</h3>
+        <p class="test-desc"
+           data-kk="Қай бағыт саған жақын екенін және болашақ мамандыққа бейімділігіңді анықтауға көмектеседі."
+           data-ru="Помогает понять, какое направление тебе ближе и к какой профессии у тебя больше склонности.">
+          Қай бағыт саған жақын екенін және болашақ мамандыққа бейімділігіңді анықтауға көмектеседі.
+        </p>
+
+        <form id="ikigaiForm"></form>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="calculateIkigai()" data-kk="Нәтижені көру" data-ru="Показать результат">Нәтижені көру</button>
+          <button class="btn btn-secondary" onclick="resetForm('ikigaiForm','ikigaiResult')" data-kk="Тазарту" data-ru="Сбросить">Тазарту</button>
+        </div>
+
+        <div class="result-box" id="ikigaiResult"></div>
+      </section>
+      
     </div>
   </main>
 
@@ -873,6 +915,146 @@
         scores: [3, 2, 1, 0]
       }
     ];
+        const temperamentQuestions = [
+      {
+        kk: "Жаңа ортаға барғанда сен:",
+        ru: "Когда ты попадаешь в новую среду, ты:",
+        options: {
+          kk: ["Тез араласып кетемін", "Сабырмен бақылап жүремін", "Көшбасшы болуға тырысамын", "Ұяламын, үндемеймін"],
+          ru: ["Быстро вливаюсь", "Спокойно наблюдаю", "Стараюсь быть лидером", "Стесняюсь и молчу"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Қиын жағдай болғанда:",
+        ru: "В трудной ситуации ты:",
+        options: {
+          kk: ["Оңай жеңіп шығамын", "Сабыр сақтаймын", "Ашуланып кетемін", "Уайымдап қаламын"],
+          ru: ["Легко справляюсь", "Сохраняю спокойствие", "Начинаю злиться", "Сильно переживаю"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Достармен қарым-қатынаста:",
+        ru: "В отношениях с друзьями ты:",
+        options: {
+          kk: ["Көңілдімін", "Тұрақтымын", "Бастамашымын", "Сезімталмын"],
+          ru: ["Весёлый(ая)", "Спокойный(ая) и устойчивый(ая)", "Инициативный(ая)", "Чувствительный(ая)"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Сабақ кезінде:",
+        ru: "Во время занятий ты:",
+        options: {
+          kk: ["Белсендімін", "Тыныш тыңдаймын", "Жауап беруге асығамын", "Ойланамын, баяумын"],
+          ru: ["Активный(ая)", "Спокойно слушаю", "Спешу ответить", "Думаю и медлю"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Сенің мінезің:",
+        ru: "Твой характер:",
+        options: {
+          kk: ["Ашық, сөйлегіш", "Сабырлы, байсалды", "Қызуқанды, батыл", "Ұялшақ, сезімтал"],
+          ru: ["Открытый, общительный", "Спокойный, уравновешенный", "Горячий, смелый", "Стеснительный, чувствительный"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Жаңа идея келгенде:",
+        ru: "Когда появляется новая идея, ты:",
+        options: {
+          kk: ["Бірден бастаймын", "Жоспарлаймын", "Басқаларға айтамын", "Іштей ойланамын"],
+          ru: ["Сразу начинаю", "Планирую", "Рассказываю другим", "Обдумываю внутри себя"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Көңіл-күйің:",
+        ru: "Твоё настроение:",
+        options: {
+          kk: ["Жиі өзгереді", "Тұрақты", "Қатты өзгереді", "Тез бұзылады"],
+          ru: ["Часто меняется", "Стабильное", "Резко меняется", "Легко портится"]
+        },
+        types: ["A", "B", "C", "D"]
+      }
+    ];
+
+    const ikigaiQuestions = [
+      {
+        kk: "Саған не көбірек ұнайды?",
+        ru: "Что тебе больше нравится?",
+        options: {
+          kk: ["Адамдарға көмектесу", "Ойлап, зерттеу жасау", "Шығармашылықпен айналысу", "Ақша табатын нәрсе"],
+          ru: ["Помогать людям", "Думать и исследовать", "Заниматься творчеством", "То, что приносит деньги"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Уақытты қалай өткізгенді ұнатасың?",
+        ru: "Как тебе нравится проводить время?",
+        options: {
+          kk: ["Достармен, адамдармен", "Жалғыз ойланып", "Сурет, музыка, дизайн", "Жұмыс істеп, нәтижеге жету"],
+          ru: ["С друзьями, с людьми", "Один(одна), размышляя", "Рисование, музыка, дизайн", "Работая и добиваясь результата"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Саған не оңай келеді?",
+        ru: "Что тебе даётся легче всего?",
+        options: {
+          kk: ["Адамдарды түсіну", "Есеп, логика, ойлау", "Идея ойлап табу", "Жоспар құру, басқару"],
+          ru: ["Понимать людей", "Счёт, логика, мышление", "Придумывать идеи", "Планировать и управлять"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Қандай нәрсе сені қуантады?",
+        ru: "Что приносит тебе радость?",
+        options: {
+          kk: ["Біреуге көмектесу", "Жаңа нәрсе үйрену", "Шығармашылық жұмыс", "Жетістік пен ақша"],
+          ru: ["Помочь кому-то", "Узнавать новое", "Творческая работа", "Успех и деньги"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Болашақта өзіңді қалай елестетесің?",
+        ru: "Кем ты видишь себя в будущем?",
+        options: {
+          kk: ["Психолог, мұғалім, дәрігер", "Ғалым, программист", "Дизайнер, артист", "Кәсіпкер, менеджер"],
+          ru: ["Психолог, учитель, врач", "Учёный, программист", "Дизайнер, артист", "Предприниматель, менеджер"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Қандай орта сені жақсы дамытады?",
+        ru: "Какая среда помогает тебе лучше развиваться?",
+        options: {
+          kk: ["Адамдар көп орта", "Тыныш, жеке орта", "Еркін шығармашылық орта", "Бәсекелі, жұмыс ортасы"],
+          ru: ["Среда с большим количеством людей", "Тихая, личная среда", "Свободная творческая среда", "Конкурентная рабочая среда"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Саған не маңыздырақ?",
+        ru: "Что для тебя важнее?",
+        options: {
+          kk: ["Адамдардың көңілі", "Білім мен даму", "Өзін көрсету", "Табыс пен нәтиже"],
+          ru: ["Настроение и состояние людей", "Знания и развитие", "Самовыражение", "Доход и результат"]
+        },
+        types: ["A", "B", "C", "D"]
+      },
+      {
+        kk: "Қиын кезде не істейсің?",
+        ru: "Что ты делаешь в трудной ситуации?",
+        options: {
+          kk: ["Біреумен сөйлесемін", "Ойланып шешемін", "Шығармашылыққа кетемін", "Жоспар құрып әрекет етемін"],
+          ru: ["Разговариваю с кем-то", "Продумываю решение", "Ухожу в творчество", "Составляю план и действую"]
+        },
+        types: ["A", "B", "C", "D"]
+      }
+    ];
 
     function renderQuestions(formId, questions, testName) {
       const form = document.getElementById(formId);
@@ -1001,7 +1183,69 @@
         else showResult("selfesteemResult", `⚠️ 0–7 баллов — Очень низкая самооценка`, `Ты оцениваешь себя слишком низко.<br><br>👉 Важно учиться относиться к себе мягче и замечать свою ценность.`);
       }
     }
+    function calculateTemperament() {
+      const result = getTypeResult("temperament", temperamentQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
 
+      if (!result) {
+        showResult("temperamentResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (result === "A") {
+          showResult("temperamentResult", "😊 Сангвиник", "Сен көңілді, ашық және адамдармен тез тіл табысасың. Энергияң көп, жаңа ортаға тез бейімделесің.");
+        } else if (result === "B") {
+          showResult("temperamentResult", "😌 Флегматик", "Сен сабырлы, байсалды және тұрақты адамсың. Асықпайсың, жағдайды тыныш бақылап шешуге бейімсің.");
+        } else if (result === "C") {
+          showResult("temperamentResult", "🔥 Холерик", "Сен белсенді, батыл және қызуқандысың. Көшбасшылық қасиетің бар, бірақ кейде эмоцияң күшті болуы мүмкін.");
+        } else {
+          showResult("temperamentResult", "🌧 Меланхолик", "Сен сезімтал, терең ойлайтын және ұялшақ болуың мүмкін. Ішкі әлемің бай, эмоцияны қатты сезінесің.");
+        }
+      } else {
+        if (result === "A") {
+          showResult("temperamentResult", "😊 Сангвиник", "Ты весёлый(ая), открытый(ая) и легко находишь общий язык с людьми. У тебя много энергии и ты быстро адаптируешься.");
+        } else if (result === "B") {
+          showResult("temperamentResult", "😌 Флегматик", "Ты спокойный(ая), уравновешенный(ая) и стабильный(ая). Не спешишь и предпочитаешь решать всё спокойно.");
+        } else if (result === "C") {
+          showResult("temperamentResult", "🔥 Холерик", "Ты активный(ая), смелый(ая) и эмоциональный(ая). У тебя есть лидерские качества, но эмоции иногда бывают слишком сильными.");
+        } else {
+          showResult("temperamentResult", "🌧 Меланхолик", "Ты чувствительный(ая), глубоко думающий(ая) и иногда стеснительный(ая). У тебя богатый внутренний мир и сильные переживания.");
+        }
+      }
+    }
+
+    function calculateIkigai() {
+      const result = getTypeResult("ikigai", ikigaiQuestions.length);
+      const lang = localStorage.getItem("aig_lang") || "kk";
+
+      if (!result) {
+        showResult("ikigaiResult", lang === "kk" ? "Барлық сұраққа жауап бер." : "Ответь на все вопросы.", "");
+        return;
+      }
+
+      if (lang === "kk") {
+        if (result === "A") {
+          showResult("ikigaiResult", "❤️ Адамдарға бағытталған", "Сен адамдарға көмектесу арқылы бақыт табасың. Саған психология, медицина, педагогика сияқты салалар жақын болуы мүмкін.");
+        } else if (result === "B") {
+          showResult("ikigaiResult", "🧠 Ойшыл, аналитик", "Сен ойлау, зерттеу және үйрену арқылы дамисың. Саған IT, ғылым, аналитика бағыттары жақын болуы мүмкін.");
+        } else if (result === "C") {
+          showResult("ikigaiResult", "🎨 Шығармашыл", "Сен шығармашылық арқылы өмір сүресің. Саған дизайн, музыка, контент, өнер салалары сәйкес келуі мүмкін.");
+        } else {
+          showResult("ikigaiResult", "💼 Іскер, мақсатшыл", "Сен мақсат пен жетістік арқылы өсесің. Саған бизнес, менеджмент, кәсіпкерлік және стартап бағыты жақын болуы мүмкін.");
+        }
+      } else {
+        if (result === "A") {
+          showResult("ikigaiResult", "❤️ Направлен(а) на людей", "Ты находишь счастье в помощи людям. Тебе могут подойти психология, медицина, педагогика и другие человеко-ориентированные сферы.");
+        } else if (result === "B") {
+          showResult("ikigaiResult", "🧠 Мыслитель, аналитик", "Ты развиваешься через размышление, исследование и обучение. Тебе могут подойти IT, наука и аналитика.");
+        } else if (result === "C") {
+          showResult("ikigaiResult", "🎨 Творческий тип", "Ты живёшь через творчество. Тебе могут подойти дизайн, музыка, контент и творческие профессии.");
+        } else {
+          showResult("ikigaiResult", "💼 Деловой, целеустремлённый тип", "Ты растёшь через цель и результат. Тебе могут подойти бизнес, менеджмент, предпринимательство и стартапы.");
+        }
+      }
+    }
     function resetForm(formId, resultId) {
       document.getElementById(formId).reset();
       const result = document.getElementById(resultId);
@@ -1009,11 +1253,13 @@
       result.innerHTML = "";
     }
 
-    function renderAll() {
+       function renderAll() {
       renderQuestions("stressForm", stressQuestions, "stress");
       renderQuestions("moodForm", moodQuestions, "mood");
       renderQuestions("anxietyForm", anxietyQuestions, "anxiety");
       renderQuestions("selfesteemForm", selfesteemQuestions, "selfesteem");
+      renderTypeQuestions("temperamentForm", temperamentQuestions, "temperament");
+      renderTypeQuestions("ikigaiForm", ikigaiQuestions, "ikigai");
     }
 
     function setLanguage(lang) {
@@ -1034,7 +1280,52 @@
       localStorage.setItem("aig_lang", lang);
       renderAll();
     }
+    function renderTypeQuestions(formId, questions, testName) {
+      const form = document.getElementById(formId);
+      form.innerHTML = "";
 
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        const lang = localStorage.getItem("aig_lang") || "kk";
+
+        let optionsHtml = "";
+        q.options[lang].forEach((option, optIndex) => {
+          optionsHtml += `
+            <label class="option">
+              <input type="radio" name="${testName}_${index}" value="${q.types[optIndex]}">
+              ${option}
+            </label>
+          `;
+        });
+
+        div.innerHTML = `
+          <div class="question-title">${index + 1}. ${q[lang]}</div>
+          <div class="options">${optionsHtml}</div>
+        `;
+        form.appendChild(div);
+      });
+    }
+
+    function getTypeResult(testName, questionsCount) {
+      const counts = { A: 0, B: 0, C: 0, D: 0 };
+
+      for (let i = 0; i < questionsCount; i++) {
+        const checked = document.querySelector(`input[name="${testName}_${i}"]:checked`);
+        if (!checked) return null;
+        counts[checked.value]++;
+      }
+
+      let maxType = "A";
+      for (const key in counts) {
+        if (counts[key] > counts[maxType]) {
+          maxType = key;
+        }
+      }
+
+      return maxType;
+    }
     const savedLang = localStorage.getItem("aig_lang") || "kk";
     setLanguage(savedLang);
   </script>
